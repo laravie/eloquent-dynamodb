@@ -22,7 +22,8 @@
     "require": {
         "aws/aws-sdk-php": "^3.0",
         "illuminate/database": "^5.8",
-        "illuminate/support": "^5.8"
+        "illuminate/support": "^5.8",
+        "guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
         "orchestra/testbench": "^3.8.5"
