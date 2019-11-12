@@ -2,6 +2,7 @@
 
 namespace Laravie\DynamoDb\Tests;
 
+use Illuminate\Support\Str;
 use Laravie\DynamoDb\DynamoDbModel;
 use Laravie\DynamoDb\Facades\DynamoDb;
 use Laravie\DynamoDb\RawDynamoDbQuery;
@@ -22,7 +23,7 @@ class DynamoDbCompositeModelTest extends DynamoDbNonCompositeModelTest
     public function testCreateRecord()
     {
         $this->testModel->id = 'id1';
-        $this->testModel->id2 = str_random(36);
+        $this->testModel->id2 = Str::random(36);
         $this->testModel->name = 'Test Create';
         $this->testModel->count = 1;
         $this->testModel->save();
@@ -45,7 +46,7 @@ class DynamoDbCompositeModelTest extends DynamoDbNonCompositeModelTest
     public function testCreateAsyncRecord()
     {
         $this->testModel->id = 'id1';
-        $this->testModel->id2 = str_random(36);
+        $this->testModel->id2 = Str::random(36);
         $this->testModel->name = 'Test Create Async';
         $this->testModel->count = 1;
         $this->testModel->saveAsync()->wait();
@@ -756,11 +757,11 @@ class DynamoDbCompositeModelTest extends DynamoDbNonCompositeModelTest
     {
         $item = [
             'id' => ['S' => 'id1'],
-            'id2' => ['S' => str_random(36)],
-            'name' => ['S' => str_random(36)],
-            'description' => ['S' => str_random(256)],
+            'id2' => ['S' => Str::random(36)],
+            'name' => ['S' => Str::random(36)],
+            'description' => ['S' => Str::random(256)],
             'count' => ['N' => rand()],
-            'author' => ['S' => str_random()],
+            'author' => ['S' => Str::random()],
             'nested' => [
                 'M' => [
                     'foo' => ['S' => 'bar'],

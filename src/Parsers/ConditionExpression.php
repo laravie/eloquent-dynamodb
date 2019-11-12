@@ -2,9 +2,10 @@
 
 namespace Laravie\DynamoDb\Parsers;
 
+use Illuminate\Support\Arr;
 use Laravie\DynamoDb\ComparisonOperator;
-use Laravie\DynamoDb\NotSupportedException;
 use Laravie\DynamoDb\Facades\DynamoDb;
+use Laravie\DynamoDb\NotSupportedException;
 
 class ConditionExpression
 {
@@ -70,9 +71,9 @@ class ConditionExpression
         $parsed = [];
 
         foreach ($where as $condition) {
-            $boolean = array_get($condition, 'boolean');
-            $value = array_get($condition, 'value');
-            $type = array_get($condition, 'type');
+            $boolean = Arr::get($condition, 'boolean');
+            $value = Arr::get($condition, 'value');
+            $type = Arr::get($condition, 'type');
 
             $prefix = '';
 
@@ -86,7 +87,7 @@ class ConditionExpression
             }
 
             $parsed[] = $prefix . $this->parseCondition(
-                array_get($condition, 'column'),
+                Arr::get($condition, 'column'),
                 $type,
                 $value
             );

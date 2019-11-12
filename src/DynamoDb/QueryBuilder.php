@@ -4,6 +4,7 @@ namespace Laravie\DynamoDb\DynamoDb;
 
 use Aws\DynamoDb\DynamoDbClient;
 use BadMethodCallException;
+use Illuminate\Support\Str;
 use Laravie\DynamoDb\DynamoDbClientInterface;
 use Laravie\DynamoDb\RawDynamoDbQuery;
 
@@ -109,7 +110,7 @@ class QueryBuilder
      */
     public function __call($method, $parameters)
     {
-        if (starts_with($method, 'set')) {
+        if (Str::startsWith($method, 'set')) {
             $key = array_reverse(explode('set', $method, 2))[0];
             $this->query[$key] = current($parameters);
 

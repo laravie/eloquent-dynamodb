@@ -20,7 +20,7 @@
         }
     },
     "require": {
-        "aws/aws-sdk-php": "^3.0",
+        "aws/aws-sdk-php": "^3.32",
         "illuminate/database": "^5.8",
         "illuminate/support": "^5.8",
         "guzzlehttp/guzzle": "^6.3"

@@ -2,6 +2,7 @@
 
 namespace Laravie\DynamoDb\Tests;
 
+use Illuminate\Support\Str;
 use Laravie\DynamoDb\DynamoDbModel;
 use Laravie\DynamoDb\RawDynamoDbQuery;
 use \Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -20,7 +21,7 @@ class DynamoDbNonCompositeModelTest extends DynamoDbModelTest
 
     public function testCreateRecord()
     {
-        $this->testModel->id = str_random(36);
+        $this->testModel->id = Str::random(36);
         $this->testModel->name = 'Test Create';
         $this->testModel->count = 1;
         $this->testModel->save();
@@ -40,7 +41,7 @@ class DynamoDbNonCompositeModelTest extends DynamoDbModelTest
 
     public function testCreateAsyncRecord()
     {
-        $this->testModel->id = str_random(36);
+        $this->testModel->id = Str::random(36);
         $this->testModel->name = 'Test Create Async';
         $this->testModel->count = 1;
         $this->testModel->saveAsync()->wait();
@@ -1194,11 +1195,11 @@ class DynamoDbNonCompositeModelTest extends DynamoDbModelTest
     public function seed($attributes = [], $exclude = [])
     {
         $item = [
-            'id' => ['S' => str_random(36)],
-            'name' => ['S' => str_random(36)],
-            'description' => ['S' => str_random(256)],
+            'id' => ['S' => Str::random(36)],
+            'name' => ['S' => Str::random(36)],
+            'description' => ['S' => Str::random(256)],
             'count' => ['N' => rand()],
-            'author' => ['S' => str_random()],
+            'author' => ['S' => Str::random()],
             'nested' => [
                 'M' => [
                     'foo' => ['S' => 'bar'],
