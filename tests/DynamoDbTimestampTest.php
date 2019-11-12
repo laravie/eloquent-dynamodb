@@ -3,6 +3,7 @@
 namespace Laravie\DynamoDb\Tests;
 
 use Carbon\Carbon;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 /**
@@ -44,7 +45,7 @@ class DynamoDbTimestampTest extends DynamoDbModelTest
         Carbon::setTestNow(Carbon::create(2017, 03, 01, 8, 30, 0));
         $now = new Carbon();
         $seed = $this->seed();
-        $seedId = array_get($seed, 'id.S');
+        $seedId = Arr::get($seed, 'id.S');
 
         $newName = 'New Name';
         $model = $this->testModel->find($seedId);

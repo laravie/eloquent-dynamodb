@@ -2,6 +2,7 @@
 
 namespace Laravie\DynamoDb\Tests\Parsers;
 
+use Illuminate\Support\Arr;
 use Laravie\DynamoDb\ComparisonOperator;
 use Laravie\DynamoDb\Parsers\ConditionExpression;
 use Laravie\DynamoDb\Parsers\ExpressionAttributeNames;
@@ -156,7 +157,7 @@ class ConditionExpressionTest extends TestCase
         $this->assertEquals(['BOOL' => true], $this->values->get(':a13'));
         $this->assertEquals(['S' => 'android'], $this->values->get(':a14'));
 
-        $columns = array_filter(array_pluck($where, 'column'));
+        $columns = array_filter(Arr::pluck($where, 'column'));
 
         foreach ($columns as $column) {
             $this->assertEquals($column, $this->names->get("#{$column}"));
