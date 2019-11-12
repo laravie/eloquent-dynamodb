@@ -2,7 +2,6 @@ language: php
 dist: xenial
 
 php:
-  - 7.1
   - 7.2
   - 7.3
 
@@ -11,8 +10,11 @@ env:
     - setup=basic
   matrix:
     - laravel=^5.8
+    - laravel=^6.0
     - setup=stable laravel=^5.8
+    - setup=stable laravel=^6.0
     - setup=lowest laravel=^5.8
+    - setup=lowest laravel=^6.0
 
 before_install:
   - composer config discard-changes true
@@ -26,3 +28,15 @@ before_script:
 
 script:
   - vendor/bin/phpunit -c phpunit.xml
+
+matrix:
+  include:
+    - php: 7.1
+      env: laravel=^5.8
+    - php: 7.1
+      env: setup=stable laravel=^5.8
+    - php: 7.1
+      env: setup=lowest laravel=^5.8
+  allow_failures:
+    - env: setup=coveralls coverage=yes laravel=^6.0
+  fast_finish: true
