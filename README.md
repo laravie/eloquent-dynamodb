@@ -1,18 +1,15 @@
 laravel-dynamodb
 ================
 
-[![Latest Stable Version](https://poser.pugx.org/baopham/dynamodb/v/stable)](https://packagist.org/packages/baopham/dynamodb)
-[![Total Downloads](https://poser.pugx.org/baopham/dynamodb/downloads)](https://packagist.org/packages/baopham/dynamodb)
-[![Latest Unstable Version](https://poser.pugx.org/baopham/dynamodb/v/unstable)](https://packagist.org/packages/baopham/dynamodb)
+[![Latest Stable Version](https://poser.pugx.org/laravie/eloquent-dynamodb/v/stable)](https://packagist.org/packages/laravie/eloquent-dynamodb)
+[![Total Downloads](https://poser.pugx.org/laravie/eloquent-dynamodb/downloads)](https://packagist.org/packages/laravie/eloquent-dynamodb)
+[![Latest Unstable Version](https://poser.pugx.org/laravie/eloquent-dynamodb/v/unstable)](https://packagist.org/packages/laravie/eloquent-dynamodb)
 [![Build Status](https://travis-ci.org/baopham/laravel-dynamodb.svg?branch=master)](https://travis-ci.org/baopham/laravel-dynamodb)
-[![Code Coverage](https://scrutinizer-ci.com/g/baopham/laravel-dynamodb/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/baopham/laravel-dynamodb/?branch=master)
-[![License](https://poser.pugx.org/baopham/dynamodb/license)](https://packagist.org/packages/baopham/dynamodb)
+[![License](https://poser.pugx.org/laravie/eloquent-dynamodb/license)](https://packagist.org/packages/laravie/eloquent-dynamodb)
 
 Supports all key types - primary hash key and composite keys.
 
 > For advanced users only. If you're not familiar with Laravel, Laravel Eloquent and DynamoDB, then I suggest that you get familiar with those first. 
-
-**Breaking changes in v2: config no longer lives in config/services.php**
 
 * [Install](#install)
 * [Usage](#usage)
@@ -35,8 +32,6 @@ Supports all key types - primary hash key and composite keys.
 * [Indexes](#indexes)
 * [Composite Keys](#composite-keys)
 * [Query Builder](#query-builder)
-* [Requirements](#requirements)
-* [Migrate from v1 to v2](#migrate-from-v1-to-v2)
 * [FAQ](#faq)
 * [License](LICENSE)
 * [Author and Contributors](#author-and-contributors)
@@ -45,13 +40,12 @@ Install
 ------
 
 * Composer install
-    ```bash
-    composer require baopham/dynamodb
-    ```
+
+    composer require laravie/eloquent-dynamodb
  
 * Install service provider:
 
-    ```php
+```php
     // config/app.php
 
     'providers' => [
@@ -59,13 +53,11 @@ Install
         BaoPham\DynamoDb\DynamoDbServiceProvider::class,
         ...
     ];
-    ``` 
+``` 
     
 * Run
 
-    ```php
     php artisan vendor:publish
-    ``` 
     
 * Update DynamoDb config in [config/dynamodb.php](config/dynamodb.php)
 
@@ -75,19 +67,17 @@ Install
   
 * Load configuration file and enable Eloquent support in `bootstrap/app.php`:
   
-  ```php
-  $app = new Laravel\Lumen\Application(
-      realpath(__DIR__.'/../')
-  );
+```php
+$app = new Laravel\Lumen\Application(
+    realpath(__DIR__.'/../')
+);
    
-  // Load dynamodb config file
-  $app->configure('dynamodb');
+// Load dynamodb config file
+$app->configure('dynamodb');
    
-  // Enable Eloquent support
-  $app->withEloquent();
-  ```
-
-
+// Enable Eloquent support
+$app->withEloquent();
+```
 
 Usage
 -----
@@ -563,25 +553,6 @@ And when ready:
 ```php
 $query->prepare()->updateTable();
 ```
-
-Requirements
--------------
-Laravel ^5.1
-
-
-Migrate from v1 to v2
----------------------
-
-Follow these steps:
-
-1. Update your `composer.json` to use v2
-1. Run `composer update`
-1. Run `php artisan vendor:publish`
-1. Move your DynamoDb config in `config/services.php` to the new config file `config/dynamodb.php` as one of the connections
-    1. Move `key`, `secret`, `token` inside `credentials`
-    1. Rename `local_endpoint` to `endpoint`
-    1. Remove `local` field
-
 
 FAQ
 ---
