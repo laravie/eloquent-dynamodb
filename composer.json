@@ -20,13 +20,13 @@
         }
     },
     "require": {
-        "aws/aws-sdk-php": "^3.32",
+        "aws/aws-sdk-php": "^3.37",
         "illuminate/database": "^5.8",
         "illuminate/support": "^5.8",
         "guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
-        "orchestra/testbench": "^3.8.5"
+        "orchestra/testbench": "^3.8"
     },
     "scripts": {
         "test": "phpunit",
