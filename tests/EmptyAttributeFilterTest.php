@@ -13,7 +13,7 @@ class EmptyAttributeFilterTest extends TestCase
 {
     public function testEmptyAttributeFilter()
     {
-        $filter = new \BaoPham\DynamoDb\EmptyAttributeFilter();
+        $filter = new \Laravie\DynamoDb\EmptyAttributeFilter();
 
         $attributes = [
             'attr1' => [],
