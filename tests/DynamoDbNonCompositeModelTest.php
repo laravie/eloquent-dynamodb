@@ -2,6 +2,7 @@
 
 namespace Laravie\DynamoDb\Tests;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Laravie\DynamoDb\DynamoDbModel;
 use Laravie\DynamoDb\RawDynamoDbQuery;
@@ -1216,7 +1217,7 @@ class DynamoDbNonCompositeModelTest extends DynamoDbModelTest
         ];
 
         $item = array_merge($item, $attributes);
-        $item = array_except($item, $exclude);
+        $item = Arr::except($item, $exclude);
 
         $this->getClient()->putItem([
             'TableName' => $this->testModel->getTable(),
