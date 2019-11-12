@@ -50,7 +50,7 @@ Install
 
     'providers' => [
         ...
-        BaoPham\DynamoDb\DynamoDbServiceProvider::class,
+        Laravie\DynamoDb\DynamoDbServiceProvider::class,
         ...
     ];
 ``` 
@@ -81,8 +81,8 @@ $app->withEloquent();
 
 Usage
 -----
-* Extends your model with `BaoPham\DynamoDb\DynamoDbModel`, then you can use Eloquent methods that are supported. The idea here is that you can switch back to Eloquent without changing your queries.  
-* Or if you want to sync your DB table with a DynamoDb table, use trait `BaoPham\DynamoDb\ModelTrait`, it will call a `PutItem` after the model is saved.
+* Extends your model with `Laravie\DynamoDb\DynamoDbModel`, then you can use Eloquent methods that are supported. The idea here is that you can switch back to Eloquent without changing your queries.  
+* Or if you want to sync your DB table with a DynamoDb table, use trait `Laravie\DynamoDb\ModelTrait`, it will call a `PutItem` after the model is saved.
 * Alternatively, you can use the [query builder](#query-builder) facade to build more complex queries.
 * AWS SDK v3 for PHP uses guzzlehttp promises to allow for asynchronous workflows. Using this package you can run eloquent queries like [delete](#deleteasync), [update](#updateasync), [save](#saveasync) asynchronously on DynamoDb. 
 
@@ -479,7 +479,7 @@ Query Builder
 Use `DynamoDb` facade to build raw queries
 
 ```php
-use BaoPham\DynamoDb\Facades\DynamoDb;
+use Laravie\DynamoDb\Facades\DynamoDb;
 
 DynamoDb::table('articles')
     // call set<key_name> to build the query body to be sent to AWS
