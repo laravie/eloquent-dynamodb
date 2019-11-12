@@ -1,28 +1,28 @@
-sudo: false
-
 language: php
-
-stages:
-  - linter
-  - test
+dist: xenial
 
 php:
-  - '7.1'
-  - '7.2'
-  - '7.3'
+  - 7.1
+  - 7.2
+  - 7.3
+
+env:
+  global:
+    - setup=basic
+  matrix:
+    - laravel=^5.8
+    - setup=stable laravel=^5.8
+    - setup=lowest laravel=^5.8
+
+before_install:
+  - composer config discard-changes true
 
 before_script:
+  - composer require "laravel/framework=${laravel}" --prefer-dist --no-interaction --no-suggest
   - java -Djava.library.path=./DynamoDBLocal_lib -jar dynamodb_local/DynamoDBLocal.jar --port 3000 &
   - sleep 2
-  - composer self-update
-  - composer install
+  - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-stable; fi
+  - if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-lowest --prefer-stable; fi
 
-script: ./vendor/bin/phpunit
-
-jobs:
-  include:
-    - stage: linter
-      php: 7.2
-      before_script: source ./scripts/dev-setup.sh
-      script: phpcs -s {src/*,tests/*}
-
+script:
+  - vendor/bin/phpunit -c phpunit.xml

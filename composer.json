@@ -14,22 +14,22 @@
             "BaoPham\\DynamoDb\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "BaoPham\\DynamoDb\\Tests\\": "tests/"
+        }
+    },
     "require": {
-        "aws/aws-sdk-php": "^3.0.0",
-        "illuminate/support": "^5.8",
-        "illuminate/database": "^5.8"
+        "aws/aws-sdk-php": "^3.0",
+        "illuminate/database": "^5.8",
+        "illuminate/support": "^5.8"
     },
     "require-dev": {
         "orchestra/testbench": "^3.8.5"
     },
     "scripts": {
         "test": "phpunit",
-        "dynamodb_local": "java -Djava.library.path=./DynamoDBLocal_lib -jar dynamodb_local/DynamoDBLocal.jar --port 3000"
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "BaoPham\\DynamoDb\\Tests\\": "tests/"
-        }
+        "dynamodb": "java -Djava.library.path=./DynamoDBLocal_lib -jar dynamodb_local/DynamoDBLocal.jar --port 3000"
     },
     "extra": {
         "laravel": {
@@ -37,5 +37,6 @@
                 "BaoPham\\DynamoDb\\DynamoDbServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
