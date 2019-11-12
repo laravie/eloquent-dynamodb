@@ -1,15 +1,15 @@
 <?php
 
-namespace BaoPham\DynamoDb;
+namespace Laravie\DynamoDb;
 
-use BaoPham\DynamoDb\Concerns\HasParsers;
-use BaoPham\DynamoDb\ConditionAnalyzer\Analyzer;
-use BaoPham\DynamoDb\Facades\DynamoDb;
-use BaoPham\DynamoDb\H;
 use Closure;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\Scope;
+use Illuminate\Support\Arr;
+use Laravie\DynamoDb\Concerns\HasParsers;
+use Laravie\DynamoDb\ConditionAnalyzer\Analyzer;
+use Laravie\DynamoDb\Facades\DynamoDb;
 
 class DynamoDbQueryBuilder
 {
@@ -821,7 +821,7 @@ class DynamoDbQueryBuilder
         }
 
         // could be ['foo', 'bar'], [['id1' => 'foo', 'id2' => 'bar'], ...]
-        return $this->model->hasCompositeKey() ? is_array(H::array_first($id)) : is_array($id);
+        return $this->model->hasCompositeKey() ? is_array(Arr::first($id)) : is_array($id);
     }
 
     /**

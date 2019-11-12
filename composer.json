@@ -11,12 +11,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "BaoPham\\DynamoDb\\": "src/"
+            "Laravie\\DynamoDb\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "BaoPham\\DynamoDb\\Tests\\": "tests/"
+            "Laravie\\DynamoDb\\Tests\\": "tests/"
         }
     },
     "require": {

@@ -1,8 +1,8 @@
 <?php
 
-namespace BaoPham\DynamoDb\Tests;
+namespace Laravie\DynamoDb\Tests;
 
-use BaoPham\DynamoDb\DynamoDbQueryBuilder;
+use Laravie\DynamoDb\DynamoDbQueryBuilder;
 
 /**
  * Class DynamoDbQueryScopeTest
@@ -140,7 +140,7 @@ class DynamoDbQueryScopeTest extends DynamoDbModelTest
 }
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MultipleClasses
-class ModelWithQueryScopes extends \BaoPham\DynamoDb\DynamoDbModel
+class ModelWithQueryScopes extends \Laravie\DynamoDb\DynamoDbModel
 {
     protected $fillable = ['name', 'description', 'count'];
 

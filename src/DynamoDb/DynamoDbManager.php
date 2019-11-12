@@ -1,8 +1,8 @@
 <?php
 
-namespace BaoPham\DynamoDb\DynamoDb;
+namespace Laravie\DynamoDb\DynamoDb;
 
-use BaoPham\DynamoDb\DynamoDbClientInterface;
+use Laravie\DynamoDb\DynamoDbClientInterface;
 
 /**
  * Class DynamoDb

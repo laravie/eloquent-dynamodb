@@ -1,9 +1,9 @@
 <?php
 
-namespace BaoPham\DynamoDb\Tests;
+namespace Laravie\DynamoDb\Tests;
 
-use BaoPham\DynamoDb\DynamoDbClientInterface;
-use BaoPham\DynamoDb\DynamoDbModel;
+use Laravie\DynamoDb\DynamoDbClientInterface;
+use Laravie\DynamoDb\DynamoDbModel;
 use PHPUnit\Framework\TestCase;
 
 /**

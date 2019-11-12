@@ -1,11 +1,11 @@
 <?php
 
-namespace BaoPham\DynamoDb\Tests\Facades;
+namespace Laravie\DynamoDb\Tests\Facades;
 
 use Aws\DynamoDb\DynamoDbClient;
-use BaoPham\DynamoDb\DynamoDb\QueryBuilder;
-use BaoPham\DynamoDb\Facades\DynamoDb;
-use BaoPham\DynamoDb\Tests\DynamoDbTestCase;
+use Laravie\DynamoDb\DynamoDb\QueryBuilder;
+use Laravie\DynamoDb\Facades\DynamoDb;
+use Laravie\DynamoDb\Tests\DynamoDbTestCase;
 
 class DynamoDbFacadeTest extends DynamoDbTestCase
 {

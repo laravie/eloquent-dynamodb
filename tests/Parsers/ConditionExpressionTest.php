@@ -1,12 +1,12 @@
 <?php
 
-namespace BaoPham\DynamoDb\Tests\Parsers;
+namespace Laravie\DynamoDb\Tests\Parsers;
 
-use BaoPham\DynamoDb\ComparisonOperator;
-use BaoPham\DynamoDb\Parsers\ConditionExpression;
-use BaoPham\DynamoDb\Parsers\ExpressionAttributeNames;
-use BaoPham\DynamoDb\Parsers\ExpressionAttributeValues;
-use BaoPham\DynamoDb\Parsers\Placeholder;
+use Laravie\DynamoDb\ComparisonOperator;
+use Laravie\DynamoDb\Parsers\ConditionExpression;
+use Laravie\DynamoDb\Parsers\ExpressionAttributeNames;
+use Laravie\DynamoDb\Parsers\ExpressionAttributeValues;
+use Laravie\DynamoDb\Parsers\Placeholder;
 use PHPUnit\Framework\TestCase;
 
 class ConditionExpressionTest extends TestCase

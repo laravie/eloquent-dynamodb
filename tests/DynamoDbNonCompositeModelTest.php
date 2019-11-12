@@ -1,9 +1,9 @@
 <?php
 
-namespace BaoPham\DynamoDb\Tests;
+namespace Laravie\DynamoDb\Tests;
 
-use BaoPham\DynamoDb\DynamoDbModel;
-use BaoPham\DynamoDb\RawDynamoDbQuery;
+use Laravie\DynamoDb\DynamoDbModel;
+use Laravie\DynamoDb\RawDynamoDbQuery;
 use \Illuminate\Database\Eloquent\ModelNotFoundException;
 
 /**

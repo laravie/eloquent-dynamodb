@@ -1,14 +1,14 @@
 <?php
 
-namespace BaoPham\DynamoDb\Concerns;
+namespace Laravie\DynamoDb\Concerns;
 
-use BaoPham\DynamoDb\Parsers\ExpressionAttributeNames;
-use BaoPham\DynamoDb\Parsers\ExpressionAttributeValues;
-use BaoPham\DynamoDb\Parsers\FilterExpression;
-use BaoPham\DynamoDb\Parsers\KeyConditionExpression;
-use BaoPham\DynamoDb\Parsers\Placeholder;
-use BaoPham\DynamoDb\Parsers\ProjectionExpression;
-use BaoPham\DynamoDb\Parsers\UpdateExpression;
+use Laravie\DynamoDb\Parsers\ExpressionAttributeNames;
+use Laravie\DynamoDb\Parsers\ExpressionAttributeValues;
+use Laravie\DynamoDb\Parsers\FilterExpression;
+use Laravie\DynamoDb\Parsers\KeyConditionExpression;
+use Laravie\DynamoDb\Parsers\Placeholder;
+use Laravie\DynamoDb\Parsers\ProjectionExpression;
+use Laravie\DynamoDb\Parsers\UpdateExpression;
 
 trait HasParsers
 {

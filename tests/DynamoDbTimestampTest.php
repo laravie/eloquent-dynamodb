@@ -1,6 +1,6 @@
 <?php
 
-namespace BaoPham\DynamoDb\Tests;
+namespace Laravie\DynamoDb\Tests;
 
 use Carbon\Carbon;
 
@@ -86,7 +86,7 @@ class DynamoDbTimestampTest extends DynamoDbModelTest
 }
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MultipleClasses
-class TimestampModel extends \BaoPham\DynamoDb\DynamoDbModel
+class TimestampModel extends \Laravie\DynamoDb\DynamoDbModel
 {
     protected $fillable = ['name', 'description', 'count'];
 

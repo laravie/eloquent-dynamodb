@@ -1,6 +1,6 @@
 <?php
 
-namespace BaoPham\DynamoDb;
+namespace Laravie\DynamoDb;
 
 /**
  * Class RawDynamoDbQuery

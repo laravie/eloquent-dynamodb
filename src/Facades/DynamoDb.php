@@ -1,6 +1,6 @@
 <?php
 
-namespace BaoPham\DynamoDb\Facades;
+namespace Laravie\DynamoDb\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

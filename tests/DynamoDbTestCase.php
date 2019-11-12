@@ -1,8 +1,8 @@
 <?php
 
-namespace BaoPham\DynamoDb\Tests;
+namespace Laravie\DynamoDb\Tests;
 
-use BaoPham\DynamoDb\DynamoDbServiceProvider;
+use Laravie\DynamoDb\DynamoDbServiceProvider;
 use Orchestra\Testbench\TestCase;
 
 /**

@@ -1,10 +1,10 @@
 <?php
 
-namespace BaoPham\DynamoDb\ConditionAnalyzer;
+namespace Laravie\DynamoDb\ConditionAnalyzer;
 
-use BaoPham\DynamoDb\ComparisonOperator;
-use BaoPham\DynamoDb\DynamoDbModel;
-use BaoPham\DynamoDb\H;
+use Illuminate\Support\Arr;
+use Laravie\DynamoDb\ComparisonOperator;
+use Laravie\DynamoDb\DynamoDbModel;
 
 /**
  * Class ConditionAnalyzer
@@ -144,7 +144,7 @@ class Analyzer
      */
     private function getCondition($column)
     {
-        return H::array_first($this->conditions, function ($condition) use ($column) {
+        return Arr::first($this->conditions, function ($condition) use ($column) {
             return $condition['column'] === $column;
         });
     }

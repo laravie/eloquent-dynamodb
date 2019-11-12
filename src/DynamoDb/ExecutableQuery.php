@@ -1,6 +1,6 @@
 <?php
 
-namespace BaoPham\DynamoDb\DynamoDb;
+namespace Laravie\DynamoDb\DynamoDb;
 
 use Aws\DynamoDb\DynamoDbClient;
 

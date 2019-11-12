@@ -1,6 +1,6 @@
 <?php
 
-namespace BaoPham\DynamoDb\Parsers;
+namespace Laravie\DynamoDb\Parsers;
 
 class Placeholder
 {

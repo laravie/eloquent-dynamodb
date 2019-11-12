@@ -1,6 +1,6 @@
 <?php
 
-namespace BaoPham\DynamoDb\Tests;
+namespace Laravie\DynamoDb\Tests;
 
 use PHPUnit\Framework\TestCase;
 

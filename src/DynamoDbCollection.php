@@ -1,9 +1,9 @@
 <?php
 
-namespace BaoPham\DynamoDb;
+namespace Laravie\DynamoDb;
 
 use Illuminate\Database\Eloquent\Collection;
-use BaoPham\DynamoDb\ConditionAnalyzer\Index;
+use Laravie\DynamoDb\ConditionAnalyzer\Index;
 
 class DynamoDbCollection extends Collection
 {

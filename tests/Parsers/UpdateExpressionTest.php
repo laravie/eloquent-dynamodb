@@ -1,9 +1,9 @@
 <?php
 
-namespace BaoPham\DynamoDb\Tests\Parsers;
+namespace Laravie\DynamoDb\Tests\Parsers;
 
-use BaoPham\DynamoDb\Parsers\ExpressionAttributeNames;
-use BaoPham\DynamoDb\Parsers\UpdateExpression;
+use Laravie\DynamoDb\Parsers\ExpressionAttributeNames;
+use Laravie\DynamoDb\Parsers\UpdateExpression;
 use PHPUnit\Framework\TestCase;
 
 class UpdateExpressionTest extends TestCase

@@ -1,6 +1,6 @@
 <?php
 
-namespace BaoPham\DynamoDb;
+namespace Laravie\DynamoDb;
 
 use Exception;
 use Illuminate\Support\Facades\Log;
@@ -35,7 +35,7 @@ class ModelObserver
     private function saveToDynamoDb($model)
     {
         $attrs = $model->attributesToArray();
-        
+
         try {
             $this->dynamoDbClient->putItem([
                 'TableName' => $model->getDynamoDbTableName(),

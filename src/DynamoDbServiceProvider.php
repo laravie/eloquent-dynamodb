@@ -1,9 +1,9 @@
 <?php
 
-namespace BaoPham\DynamoDb;
+namespace Laravie\DynamoDb;
 
 use Aws\DynamoDb\Marshaler;
-use BaoPham\DynamoDb\DynamoDb\DynamoDbManager;
+use Laravie\DynamoDb\DynamoDb\DynamoDbManager;
 use Illuminate\Support\ServiceProvider;
 
 class DynamoDbServiceProvider extends ServiceProvider

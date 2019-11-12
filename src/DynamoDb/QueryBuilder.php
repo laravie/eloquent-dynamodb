@@ -1,11 +1,11 @@
 <?php
 
-namespace BaoPham\DynamoDb\DynamoDb;
+namespace Laravie\DynamoDb\DynamoDb;
 
 use Aws\DynamoDb\DynamoDbClient;
 use BadMethodCallException;
-use BaoPham\DynamoDb\DynamoDbClientInterface;
-use BaoPham\DynamoDb\RawDynamoDbQuery;
+use Laravie\DynamoDb\DynamoDbClientInterface;
+use Laravie\DynamoDb\RawDynamoDbQuery;
 
 /**
  * Class QueryBuilder

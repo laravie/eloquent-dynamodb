@@ -1,8 +1,8 @@
 <?php
 
-namespace BaoPham\DynamoDb\Parsers;
+namespace Laravie\DynamoDb\Parsers;
 
-use BaoPham\DynamoDb\ComparisonOperator;
+use Laravie\DynamoDb\ComparisonOperator;
 
 class KeyConditionExpression extends ConditionExpression
 {

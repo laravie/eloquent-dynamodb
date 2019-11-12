@@ -1,12 +1,12 @@
 <?php
 
-namespace BaoPham\DynamoDb\Tests\DynamoDb;
+namespace Laravie\DynamoDb\Tests\DynamoDb;
 
 use Aws\DynamoDb\DynamoDbClient;
 use Aws\DynamoDb\Marshaler;
-use BaoPham\DynamoDb\DynamoDbClientInterface;
-use BaoPham\DynamoDb\Tests\DynamoDbTestCase;
-use BaoPham\DynamoDb\DynamoDb\DynamoDbManager;
+use Laravie\DynamoDb\DynamoDbClientInterface;
+use Laravie\DynamoDb\Tests\DynamoDbTestCase;
+use Laravie\DynamoDb\DynamoDb\DynamoDbManager;
 
 class DynamoDbManagerTest extends DynamoDbTestCase
 {

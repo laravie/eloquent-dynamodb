@@ -1,10 +1,10 @@
 <?php
 
-namespace BaoPham\DynamoDb\Parsers;
+namespace Laravie\DynamoDb\Parsers;
 
-use BaoPham\DynamoDb\ComparisonOperator;
-use BaoPham\DynamoDb\NotSupportedException;
-use BaoPham\DynamoDb\Facades\DynamoDb;
+use Laravie\DynamoDb\ComparisonOperator;
+use Laravie\DynamoDb\NotSupportedException;
+use Laravie\DynamoDb\Facades\DynamoDb;
 
 class ConditionExpression
 {
