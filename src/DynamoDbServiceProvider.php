@@ -3,8 +3,8 @@
 namespace Laravie\DynamoDb;
 
 use Aws\DynamoDb\Marshaler;
-use Laravie\DynamoDb\DynamoDb\DynamoDbManager;
 use Illuminate\Support\ServiceProvider;
+use Laravie\DynamoDb\DynamoDb\DynamoDbManager;
 
 class DynamoDbServiceProvider extends ServiceProvider
 {

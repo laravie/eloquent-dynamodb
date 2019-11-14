@@ -5,7 +5,7 @@ namespace Laravie\DynamoDb\DynamoDb;
 use Laravie\DynamoDb\DynamoDbClientInterface;
 
 /**
- * Class DynamoDb
+ * Class DynamoDb.
  *
  * @package BaoPham\DynamoDb\DynamoDb
  */
@@ -49,6 +49,7 @@ class DynamoDbManager
 
     /**
      * @param string|null $connection
+     *
      * @return \Aws\DynamoDb\DynamoDbClient
      */
     public function client($connection = null)
@@ -66,6 +67,7 @@ class DynamoDbManager
 
     /**
      * @param string $table
+     *
      * @return QueryBuilder
      */
     public function table($table)

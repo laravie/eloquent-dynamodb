@@ -9,7 +9,7 @@ use Laravie\DynamoDb\DynamoDbClientInterface;
 use Laravie\DynamoDb\RawDynamoDbQuery;
 
 /**
- * Class QueryBuilder
+ * Class QueryBuilder.
  *
  * @package BaoPham\DynamoDb\DynamoDb
  *
@@ -61,7 +61,7 @@ class QueryBuilder
     private $service;
 
     /**
-     * Query body to be sent to AWS
+     * Query body to be sent to AWS.
      *
      * @var array
      */
@@ -95,17 +95,20 @@ class QueryBuilder
 
     /**
      * @param DynamoDbClient|null $client
+     *
      * @return ExecutableQuery
      */
     public function prepare(DynamoDbClient $client = null)
     {
         $raw = new RawDynamoDbQuery(null, $this->query);
+
         return new ExecutableQuery($client ?: $this->service->getClient(), $raw->finalize()->query);
     }
 
     /**
      * @param  string $method
      * @param  array  $parameters
+     *
      * @return mixed
      */
     public function __call($method, $parameters)
@@ -117,10 +120,6 @@ class QueryBuilder
             return $this;
         }
 
-        throw new BadMethodCallException(sprintf(
-            'Method %s::%s does not exist.',
-            static::class,
-            $method
-        ));
+        throw new BadMethodCallException(sprintf('Method %s::%s does not exist.', static::class, $method));
     }
 }

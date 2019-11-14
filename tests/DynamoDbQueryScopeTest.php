@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 use Laravie\DynamoDb\DynamoDbQueryBuilder;
 
 /**
- * Class DynamoDbQueryScopeTest
+ * Class DynamoDbQueryScopeTest.
  *
  * @package BaoPham\DynamoDb\Tests
  */
@@ -134,7 +134,7 @@ class DynamoDbQueryScopeTest extends DynamoDbModelTest
 
     protected function seedMultiple($count = 10)
     {
-        for ($x = 0; $x < $count; $x++) {
+        for ($x = 0; $x < $count; ++$x) {
             $this->seed(['count' => ['N' => $x]]);
         }
     }

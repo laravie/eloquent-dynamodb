@@ -86,6 +86,7 @@ class DynamoDbQueryBuilder
      * Alias to set the "limit" value of the query.
      *
      * @param  int  $value
+     *
      * @return DynamoDbQueryBuilder
      */
     public function take($value)
@@ -97,6 +98,7 @@ class DynamoDbQueryBuilder
      * Set the "limit" value of the query.
      *
      * @param  int  $value
+     *
      * @return $this
      */
     public function limit($value)
@@ -110,6 +112,7 @@ class DynamoDbQueryBuilder
      * Alias to set the "offset" value of the query.
      *
      * @param  int $value
+     *
      * @throws NotSupportedException
      */
     public function skip($value)
@@ -121,6 +124,7 @@ class DynamoDbQueryBuilder
      * Set the "offset" value of the query.
      *
      * @param  int $value
+     *
      * @throws NotSupportedException
      */
     public function offset($value)
@@ -142,7 +146,7 @@ class DynamoDbQueryBuilder
      *   Take the last item of this query result as the next "offset":
      *       $nextPage = $query->after($last)->limit(2)->all();
      *
-     *   Alternatively, pass in nothing to reset the starting point.
+     *   Alternatively, pass in nothing to reset the starting point
      *
      * @return $this
      */
@@ -173,7 +177,7 @@ class DynamoDbQueryBuilder
      * Similar to after(), but instead of using the model instance, the model's keys are used.
      * Use $collection->lastKey() or $model->getKeys() to retrieve the value.
      *
-     * @param  Array  $key
+     * @param  array  $key
      *   Examples:
      *
      *   For query such as
@@ -182,25 +186,28 @@ class DynamoDbQueryBuilder
      *   Take the last item of this query result as the next "offset":
      *       $nextPage = $query->afterKey($items->lastKey())->limit(2)->all();
      *
-     *   Alternatively, pass in nothing to reset the starting point.
+     *   Alternatively, pass in nothing to reset the starting point
      *
      * @return $this
      */
     public function afterKey($key = null)
     {
         $this->lastEvaluatedKey = empty($key) ? null : DynamoDb::marshalItem($key);
+
         return $this;
     }
 
     /**
-     * Set the index name manually
+     * Set the index name manually.
      *
      * @param string $index The index name
+     *
      * @return $this
      */
     public function withIndex($index)
     {
         $this->index = $index;
+
         return $this;
     }
 
@@ -234,7 +241,7 @@ class DynamoDbQueryBuilder
         // If the given operator is not found in the list of valid operators we will
         // assume that the developer is just short-cutting the '=' operators and
         // we will set the operators to '=' and set the values appropriately.
-        if (!ComparisonOperator::isValidOperator($operator)) {
+        if (! ComparisonOperator::isValidOperator($operator)) {
             list($value, $operator) = [$operator, '='];
         }
 
@@ -260,6 +267,7 @@ class DynamoDbQueryBuilder
      *
      * @param  \Closure $callback
      * @param  string   $boolean
+     *
      * @return $this
      */
     public function whereNested(Closure $callback, $boolean = 'and')
@@ -284,6 +292,7 @@ class DynamoDbQueryBuilder
      *
      * @param  DynamoDbQueryBuilder $query
      * @param  string  $boolean
+     *
      * @return $this
      */
     public function addNestedWhereQuery($query, $boolean = 'and')
@@ -304,6 +313,7 @@ class DynamoDbQueryBuilder
      * @param  string  $column
      * @param  string  $operator
      * @param  mixed   $value
+     *
      * @return $this
      */
     public function orWhere($column, $operator = null, $value = null)
@@ -318,8 +328,10 @@ class DynamoDbQueryBuilder
      * @param  mixed   $values
      * @param  string  $boolean
      * @param  bool    $not
-     * @return $this
+     *
      * @throws NotSupportedException
+     *
+     * @return $this
      */
     public function whereIn($column, $values, $boolean = 'and', $not = false)
     {
@@ -350,6 +362,7 @@ class DynamoDbQueryBuilder
      *
      * @param  string  $column
      * @param  mixed   $values
+     *
      * @return $this
      */
     public function orWhereIn($column, $values)
@@ -363,6 +376,7 @@ class DynamoDbQueryBuilder
      * @param  string  $column
      * @param  string  $boolean
      * @param  bool    $not
+     *
      * @return $this
      */
     public function whereNull($column, $boolean = 'and', $not = false)
@@ -378,6 +392,7 @@ class DynamoDbQueryBuilder
      * Add an "or where null" clause to the query.
      *
      * @param  string  $column
+     *
      * @return $this
      */
     public function orWhereNull($column)
@@ -389,6 +404,7 @@ class DynamoDbQueryBuilder
      * Add an "or where not null" clause to the query.
      *
      * @param  string  $column
+     *
      * @return $this
      */
     public function orWhereNotNull($column)
@@ -401,6 +417,7 @@ class DynamoDbQueryBuilder
      *
      * @param  string  $column
      * @param  string  $boolean
+     *
      * @return $this
      */
     public function whereNotNull($column, $boolean = 'and')
@@ -419,7 +436,7 @@ class DynamoDbQueryBuilder
     }
 
     /**
-     * Implements the Query Chunk method
+     * Implements the Query Chunk method.
      *
      * @param int $chunkSize
      * @param callable $callback
@@ -429,7 +446,7 @@ class DynamoDbQueryBuilder
         while (true) {
             $results = $this->getAll([], $chunkSize, false);
 
-            if (!$results->isEmpty()) {
+            if (! $results->isEmpty()) {
                 if (call_user_func($callback, $results) === false) {
                     return false;
                 }
@@ -446,6 +463,7 @@ class DynamoDbQueryBuilder
     /**
      * @param $id
      * @param array $columns
+     *
      * @return DynamoDbModel|\Illuminate\Database\Eloquent\Collection|null
      */
     public function find($id, array $columns = [])
@@ -462,7 +480,7 @@ class DynamoDbQueryBuilder
             ->setKey(DynamoDb::marshalItem($this->model->getKeys()))
             ->setConsistentRead(true);
 
-        if (!empty($columns)) {
+        if (! empty($columns)) {
             $query
                 ->setProjectionExpression($this->projectionExpression->parse($columns))
                 ->setExpressionAttributeNames($this->expressionAttributeNames->all());
@@ -488,6 +506,7 @@ class DynamoDbQueryBuilder
     /**
      * @param $ids
      * @param array $columns
+     *
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function findMany($ids, array $columns = [])
@@ -544,10 +563,7 @@ class DynamoDbQueryBuilder
             return $result;
         }
 
-        throw (new ModelNotFoundException)->setModel(
-            get_class($this->model),
-            $id
-        );
+        throw (new ModelNotFoundException())->setModel(get_class($this->model), $id);
     }
 
     public function first($columns = [])
@@ -563,24 +579,26 @@ class DynamoDbQueryBuilder
             return $model;
         }
 
-        throw (new ModelNotFoundException)->setModel(get_class($this->model));
+        throw (new ModelNotFoundException())->setModel(get_class($this->model));
     }
 
     /**
-     * Remove attributes from an existing item
+     * Remove attributes from an existing item.
      *
      * @param array ...$attributes
-     * @return bool
+     *
      * @throws InvalidQuery
+     *
+     * @return bool
      */
     public function removeAttribute(...$attributes)
     {
-        $keySet = !empty(array_filter($this->model->getKeys()));
+        $keySet = ! empty(array_filter($this->model->getKeys()));
 
-        if (!$keySet) {
+        if (! $keySet) {
             $analyzer = $this->getConditionAnalyzer();
 
-            if (!$analyzer->isExactSearch()) {
+            if (! $analyzer->isExactSearch()) {
                 throw new InvalidQuery('Need to provide the key in your query');
             }
 
@@ -659,7 +677,8 @@ class DynamoDbQueryBuilder
     public function all($columns = [])
     {
         $limit = isset($this->limit) ? $this->limit : static::MAX_LIMIT;
-        return $this->getAll($columns, $limit, !isset($this->limit));
+
+        return $this->getAll($columns, $limit, ! isset($this->limit));
     }
 
     public function count()
@@ -679,6 +698,7 @@ class DynamoDbQueryBuilder
     public function decorate(Closure $closure)
     {
         $this->decorator = $closure;
+
         return $this;
     }
 
@@ -727,10 +747,11 @@ class DynamoDbQueryBuilder
     }
 
     /**
-     * Return the raw DynamoDb query
+     * Return the raw DynamoDb query.
      *
      * @param array $columns
      * @param int $limit
+     *
      * @return RawDynamoDbQuery
      */
     public function toDynamoDbQuery(
@@ -770,7 +791,7 @@ class DynamoDbQueryBuilder
             $queryBuilder->setLimit($limit);
         }
 
-        if (!empty($columns)) {
+        if (! empty($columns)) {
             // Either we try to get the count or specific columns
             if ($columns == ['count(*)']) {
                 $queryBuilder->setSelect('COUNT');
@@ -779,7 +800,7 @@ class DynamoDbQueryBuilder
             }
         }
 
-        if (!empty($this->lastEvaluatedKey)) {
+        if (! empty($this->lastEvaluatedKey)) {
             $queryBuilder->setExclusiveStartKey($this->lastEvaluatedKey);
         }
 
@@ -801,7 +822,7 @@ class DynamoDbQueryBuilder
      */
     protected function getConditionAnalyzer()
     {
-        return with(new Analyzer)
+        return with(new Analyzer())
             ->on($this->model)
             ->withIndex($this->index)
             ->analyze($this->wheres);
@@ -813,7 +834,7 @@ class DynamoDbQueryBuilder
 
         // could be ['id' => 'foo'], ['id1' => 'foo', 'id2' => 'bar']
         $single = $keys->first(function ($name) use ($id) {
-            return !isset($id[$name]);
+            return ! isset($id[$name]);
         }) === null;
 
         if ($single) {
@@ -845,6 +866,7 @@ class DynamoDbQueryBuilder
      *
      * @param  string  $identifier
      * @param  \Illuminate\Database\Eloquent\Scope|\Closure  $scope
+     *
      * @return $this
      */
     public function withGlobalScope($identifier, $scope)
@@ -862,6 +884,7 @@ class DynamoDbQueryBuilder
      * Remove a registered global scope.
      *
      * @param  \Illuminate\Database\Eloquent\Scope|string  $scope
+     *
      * @return $this
      */
     public function withoutGlobalScope($scope)
@@ -881,6 +904,7 @@ class DynamoDbQueryBuilder
      * Remove all or passed registered global scopes.
      *
      * @param  array|null  $scopes
+     *
      * @return $this
      */
     public function withoutGlobalScopes(array $scopes = null)
@@ -951,6 +975,7 @@ class DynamoDbQueryBuilder
      *
      * @param  callable  $scope
      * @param  array  $parameters
+     *
      * @return mixed
      */
     protected function callScope(callable $scope, $parameters = [])
@@ -979,6 +1004,7 @@ class DynamoDbQueryBuilder
      *
      * @param  string  $method
      * @param  array  $parameters
+     *
      * @return mixed
      */
     public function __call($method, $parameters)

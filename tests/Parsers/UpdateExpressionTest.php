@@ -31,7 +31,7 @@ class UpdateExpressionTest extends TestCase
         $this->assertEquals('REMOVE #a, #b, foo.bar, hello[0]', $expression);
         $this->assertEquals([
             '#a' => 'a',
-            '#b' => 'b'
+            '#b' => 'b',
         ], $this->names->all());
     }
 }

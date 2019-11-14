@@ -7,7 +7,8 @@ use Laravie\DynamoDb\ComparisonOperator;
 use Laravie\DynamoDb\DynamoDbModel;
 
 /**
- * Class ConditionAnalyzer
+ * Class ConditionAnalyzer.
+ *
  * @package BaoPham\DynamoDb\ConditionAnalyzer
  *
  * Usage:
@@ -113,7 +114,7 @@ class Analyzer
 
         $conditions = $this->getConditions($keyNames);
 
-        if (!$this->hasValidQueryOperator(...$keyNames)) {
+        if (! $this->hasValidQueryOperator(...$keyNames)) {
             return null;
         }
 
@@ -124,7 +125,7 @@ class Analyzer
     {
         $idConditions = $this->identifierConditions();
 
-        if (!$idConditions) {
+        if (! $idConditions) {
             return [];
         }
 
@@ -177,7 +178,7 @@ class Analyzer
             $keys = array_values($keysInfo);
 
             if (count(array_intersect($conditionKeys, $keys)) === count($keys)) {
-                if (!isset($this->indexName) || $this->indexName === $name) {
+                if (! isset($this->indexName) || $this->indexName === $name) {
                     $index = new Index(
                         $name,
                         Arr::get($keysInfo, 'hash'),
@@ -189,7 +190,7 @@ class Analyzer
             }
         }
 
-        if ($index && !$this->hasValidQueryOperator($index->hash, $index->range)) {
+        if ($index && ! $this->hasValidQueryOperator($index->hash, $index->range)) {
             $index = null;
         }
 

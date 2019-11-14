@@ -5,7 +5,7 @@ namespace Laravie\DynamoDb\Tests;
 use Aws\DynamoDb\Marshaler;
 
 /**
- * Class DynamoDbModelTest
+ * Class DynamoDbModelTest.
  *
  * @package BaoPham\DynamoDb\Tests
  */

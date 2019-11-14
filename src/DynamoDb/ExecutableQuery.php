@@ -5,7 +5,7 @@ namespace Laravie\DynamoDb\DynamoDb;
 use Aws\DynamoDb\DynamoDbClient;
 
 /**
- * Class ExecutableQuery
+ * Class ExecutableQuery.
  *
  * @package BaoPham\DynamoDb\DynamoDb
  *
@@ -89,6 +89,7 @@ class ExecutableQuery
     /**
      * @param  string $method
      * @param  array  $parameters
+     *
      * @return mixed
      */
     public function __call($method, $parameters)

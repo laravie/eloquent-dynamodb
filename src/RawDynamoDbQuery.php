@@ -3,7 +3,7 @@
 namespace Laravie\DynamoDb;
 
 /**
- * Class RawDynamoDbQuery
+ * Class RawDynamoDbQuery.
  *
  * @package BaoPham\DynamoDb
  */
@@ -17,7 +17,7 @@ class RawDynamoDbQuery implements \IteratorAggregate, \ArrayAccess, \Countable
     public $op;
 
     /**
-     * The query body being sent to AWS
+     * The query body being sent to AWS.
      *
      * @var array
      */
@@ -38,22 +38,26 @@ class RawDynamoDbQuery implements \IteratorAggregate, \ArrayAccess, \Countable
     public function finalize()
     {
         $this->query = array_filter($this->query, function ($value) {
-            return !empty($value) || is_bool($value) || is_numeric($value);
+            return ! empty($value) || is_bool($value) || is_numeric($value);
         });
 
         return $this;
     }
 
     /**
-     * Whether a offset exists
-     * @link http://php.net/manual/en/arrayaccess.offsetexists.php
+     * Whether a offset exists.
+     *
+     * @see http://php.net/manual/en/arrayaccess.offsetexists.php
+     *
      * @param mixed $offset <p>
      * An offset to check for.
      * </p>
-     * @return boolean true on success or false on failure.
+     *
+     * @return bool true on success or false on failure.
      * </p>
      * <p>
      * The return value will be casted to boolean if non-boolean was returned.
+     *
      * @since 5.0.0
      */
     public function offsetExists($offset)
@@ -62,12 +66,16 @@ class RawDynamoDbQuery implements \IteratorAggregate, \ArrayAccess, \Countable
     }
 
     /**
-     * Offset to retrieve
-     * @link http://php.net/manual/en/arrayaccess.offsetget.php
+     * Offset to retrieve.
+     *
+     * @see http://php.net/manual/en/arrayaccess.offsetget.php
+     *
      * @param mixed $offset <p>
      * The offset to retrieve.
      * </p>
-     * @return mixed Can return all value types.
+     *
+     * @return mixed can return all value types
+     *
      * @since 5.0.0
      */
     public function offsetGet($offset)
@@ -76,15 +84,19 @@ class RawDynamoDbQuery implements \IteratorAggregate, \ArrayAccess, \Countable
     }
 
     /**
-     * Offset to set
-     * @link http://php.net/manual/en/arrayaccess.offsetset.php
+     * Offset to set.
+     *
+     * @see http://php.net/manual/en/arrayaccess.offsetset.php
+     *
      * @param mixed $offset <p>
      * The offset to assign the value to.
      * </p>
      * @param mixed $value <p>
      * The value to set.
      * </p>
+     *
      * @return void
+     *
      * @since 5.0.0
      */
     public function offsetSet($offset, $value)
@@ -93,12 +105,16 @@ class RawDynamoDbQuery implements \IteratorAggregate, \ArrayAccess, \Countable
     }
 
     /**
-     * Offset to unset
-     * @link http://php.net/manual/en/arrayaccess.offsetunset.php
+     * Offset to unset.
+     *
+     * @see http://php.net/manual/en/arrayaccess.offsetunset.php
+     *
      * @param mixed $offset <p>
      * The offset to unset.
      * </p>
+     *
      * @return void
+     *
      * @since 5.0.0
      */
     public function offsetUnset($offset)
@@ -107,10 +123,13 @@ class RawDynamoDbQuery implements \IteratorAggregate, \ArrayAccess, \Countable
     }
 
     /**
-     * Retrieve an external iterator
-     * @link http://php.net/manual/en/iteratoraggregate.getiterator.php
+     * Retrieve an external iterator.
+     *
+     * @see http://php.net/manual/en/iteratoraggregate.getiterator.php
+     *
      * @return \Traversable An instance of an object implementing <b>Iterator</b> or
      * <b>Traversable</b>
+     *
      * @since 5.0.0
      */
     public function getIterator()
@@ -119,12 +138,15 @@ class RawDynamoDbQuery implements \IteratorAggregate, \ArrayAccess, \Countable
     }
 
     /**
-     * Count elements of an object
-     * @link http://php.net/manual/en/countable.count.php
+     * Count elements of an object.
+     *
+     * @see http://php.net/manual/en/countable.count.php
+     *
      * @return int The custom count as an integer.
      * </p>
      * <p>
      * The return value is cast to an integer.
+     *
      * @since 5.1.0
      */
     public function count()
@@ -133,7 +155,7 @@ class RawDynamoDbQuery implements \IteratorAggregate, \ArrayAccess, \Countable
     }
 
     /**
-     * For backward compatibility, previously we use array to represent the raw query
+     * For backward compatibility, previously we use array to represent the raw query.
      *
      * @var array
      *

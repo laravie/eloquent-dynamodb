@@ -13,6 +13,7 @@ class ProjectionExpression
 
     /**
      * @param array $columns
+     *
      * @return string
      */
     public function parse(array $columns)

@@ -16,7 +16,8 @@ class Placeholder
 
     public function next()
     {
-        $this->counter += 1;
+        ++$this->counter;
+
         return "a{$this->counter}";
     }
 

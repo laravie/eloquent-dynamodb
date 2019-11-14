@@ -7,7 +7,7 @@ use Laravie\DynamoDb\DynamoDbModel;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class DynamoDbClientServiceTest
+ * Class DynamoDbClientServiceTest.
  *
  * @package BaoPham\DynamoDb\Tests
  */
@@ -36,7 +36,7 @@ class DynamoDbClientServiceTest extends TestCase
     }
 
     /**
-     * Test that the getter and setter behave as expected for the DynamoDbClientService
+     * Test that the getter and setter behave as expected for the DynamoDbClientService.
      *
      * @test
      */
@@ -56,7 +56,7 @@ class DynamoDbClientServiceTest extends TestCase
     }
 
     /**
-     * The unset method for the DynamoDbClientService should cause the internal DynamoDbClientService to be set to null
+     * The unset method for the DynamoDbClientService should cause the internal DynamoDbClientService to be set to null.
      *
      * @test
      */
@@ -73,7 +73,7 @@ class DynamoDbClientServiceTest extends TestCase
     }
 
     /**
-     * Make sure we are not leaving any values set on the DynamoDbModel
+     * Make sure we are not leaving any values set on the DynamoDbModel.
      */
     public function tearDown(): void
     {

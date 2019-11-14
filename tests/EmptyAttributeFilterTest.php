@@ -5,7 +5,7 @@ namespace Laravie\DynamoDb\Tests;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class EmptyAttributeFilterTest
+ * Class EmptyAttributeFilterTest.
  *
  * @package BaoPham\DynamoDb\Tests
  */

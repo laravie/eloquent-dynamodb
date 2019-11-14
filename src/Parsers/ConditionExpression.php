@@ -59,8 +59,9 @@ class ConditionExpression
      *     'boolean' => 'and',
      *   ]
      *
-     * @return string
      * @throws NotSupportedException
+     *
+     * @return string
      */
     public function parse($where)
     {
@@ -78,15 +79,15 @@ class ConditionExpression
             $prefix = '';
 
             if (count($parsed) > 0) {
-                $prefix = strtoupper($boolean) . ' ';
+                $prefix = strtoupper($boolean).' ';
             }
 
             if ($type === 'Nested') {
-                $parsed[] = $prefix . $this->parseNestedCondition($value);
+                $parsed[] = $prefix.$this->parseNestedCondition($value);
                 continue;
             }
 
-            $parsed[] = $prefix . $this->parseCondition(
+            $parsed[] = $prefix.$this->parseCondition(
                 Arr::get($condition, 'column'),
                 $type,
                 $value
@@ -110,7 +111,7 @@ class ConditionExpression
 
     protected function parseNestedCondition(array $conditions)
     {
-        return '(' . $this->parse($conditions) . ')';
+        return '('.$this->parse($conditions).')';
     }
 
     protected function parseCondition($name, $operator, $value)
@@ -164,7 +165,7 @@ class ConditionExpression
         foreach ($value as $item) {
             $placeholder = $this->placeholder->next();
 
-            $valuePlaceholders[] = ":" . $placeholder;
+            $valuePlaceholders[] = ':'.$placeholder;
 
             $this->values->set($placeholder, DynamoDb::marshalValue($item));
         }

@@ -4,9 +4,9 @@ namespace Laravie\DynamoDb\Tests\DynamoDb;
 
 use Aws\DynamoDb\DynamoDbClient;
 use Aws\DynamoDb\Marshaler;
+use Laravie\DynamoDb\DynamoDb\DynamoDbManager;
 use Laravie\DynamoDb\DynamoDbClientInterface;
 use Laravie\DynamoDb\Tests\DynamoDbTestCase;
-use Laravie\DynamoDb\DynamoDb\DynamoDbManager;
 
 class DynamoDbManagerTest extends DynamoDbTestCase
 {
@@ -101,7 +101,7 @@ class DynamoDbManagerTest extends DynamoDbTestCase
                 'ExpressionAttributeNames' => ['#c' => 'comments', '#t' => 'tags'],
                 'ExpressionAttributeValues' => [
                     ':count' => ['N' => 2],
-                    ':tags' => ['L' => [['S' => 'a'], ['S' => 'b']]]
+                    ':tags' => ['L' => [['S' => 'a'], ['S' => 'b']]],
                 ],
             ]);
 

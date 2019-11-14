@@ -7,7 +7,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 /**
- * Class DynamoDbTimestampTest
+ * Class DynamoDbTimestampTest.
  *
  * @package BaoPham\DynamoDb\Tests
  */
@@ -21,7 +21,7 @@ class DynamoDbTimestampTest extends DynamoDbModelTest
     public function testCreateRecord()
     {
         Carbon::setTestNow(Carbon::create(2017, 06, 24, 5, 30, 0));
-        $now = new Carbon;
+        $now = new Carbon();
         $this->testModel->id = Str::random(36);
         $this->testModel->name = 'Test Create';
         $this->testModel->count = 1;
@@ -30,7 +30,7 @@ class DynamoDbTimestampTest extends DynamoDbModelTest
         $query = [
             'TableName' => $this->testModel->getTable(),
             'Key' => [
-                'id' => ['S' => $this->testModel->id]
+                'id' => ['S' => $this->testModel->id],
             ],
         ];
 
@@ -56,7 +56,7 @@ class DynamoDbTimestampTest extends DynamoDbModelTest
         $query = [
             'TableName' => $model->getTable(),
             'Key' => [
-                'id' => ['S' => $seedId]
+                'id' => ['S' => $seedId],
             ],
         ];
 
