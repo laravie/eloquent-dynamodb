@@ -521,7 +521,7 @@ class DynamoDbQueryBuilder
 
         $table = $this->model->getTable();
 
-        $keys = \collect($ids)->map(static function ($id) {
+        $keys = \collect($ids)->map(function ($id) {
             if (! \is_array($id)) {
                 $id = [$this->model->getKeyName() => $id];
             }
