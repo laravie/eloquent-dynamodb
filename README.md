@@ -4,7 +4,7 @@ laravel-dynamodb
 [![Latest Stable Version](https://poser.pugx.org/laravie/eloquent-dynamodb/v/stable)](https://packagist.org/packages/laravie/eloquent-dynamodb)
 [![Total Downloads](https://poser.pugx.org/laravie/eloquent-dynamodb/downloads)](https://packagist.org/packages/laravie/eloquent-dynamodb)
 [![Latest Unstable Version](https://poser.pugx.org/laravie/eloquent-dynamodb/v/unstable)](https://packagist.org/packages/laravie/eloquent-dynamodb)
-[![Build Status](https://travis-ci.org/baopham/laravel-dynamodb.svg?branch=master)](https://travis-ci.org/baopham/laravel-dynamodb)
+[![Build Status](https://travis-ci.org/laravie/eloquent-dynamodb.svg?branch=1.x)](https://travis-ci.org/laravie/eloquent-dynamodb)
 [![License](https://poser.pugx.org/laravie/eloquent-dynamodb/license)](https://packagist.org/packages/laravie/eloquent-dynamodb)
 
 Supports all key types - primary hash key and composite keys.
