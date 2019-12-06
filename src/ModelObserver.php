@@ -2,9 +2,6 @@
 
 namespace Laravie\DynamoDb;
 
-use Exception;
-use Illuminate\Support\Facades\Log;
-
 /**
  * Class ModelObserver.
  */

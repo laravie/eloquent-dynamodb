@@ -72,7 +72,7 @@ class Analyzer
         }
 
         foreach ($this->conditions as $condition) {
-            if (Arr::get($condition, 'type') !== ComparisonOperator::EQ) {
+            if (($condition['type'] ?? null) !== ComparisonOperator::EQ) {
                 return false;
             }
         }
@@ -181,8 +181,8 @@ class Analyzer
                 if (! isset($this->indexName) || $this->indexName === $name) {
                     $index = new Index(
                         $name,
-                        Arr::get($keysInfo, 'hash'),
-                        Arr::get($keysInfo, 'range')
+                        $keysInfo['hash'] ?? null,
+                        $keysInfo['range'] ?? null
                     );
 
                     break;

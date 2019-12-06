@@ -2,7 +2,6 @@
 
 namespace Laravie\DynamoDb\Parsers;
 
-use Illuminate\Support\Arr;
 use Laravie\DynamoDb\ComparisonOperator;
 use Laravie\DynamoDb\Facades\DynamoDb;
 use Laravie\DynamoDb\NotSupportedException;

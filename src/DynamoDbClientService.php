@@ -4,7 +4,6 @@ namespace Laravie\DynamoDb;
 
 use Aws\DynamoDb\DynamoDbClient;
 use Aws\DynamoDb\Marshaler;
-use Illuminate\Support\Arr;
 
 class DynamoDbClientService implements DynamoDbClientInterface
 {
