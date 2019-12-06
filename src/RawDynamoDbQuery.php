@@ -37,8 +37,8 @@ class RawDynamoDbQuery implements \IteratorAggregate, \ArrayAccess, \Countable
      */
     public function finalize()
     {
-        $this->query = array_filter($this->query, function ($value) {
-            return ! empty($value) || is_bool($value) || is_numeric($value);
+        $this->query = \array_filter($this->query, static function ($value) {
+            return ! empty($value) || \is_bool($value) || \is_numeric($value);
         });
 
         return $this;
@@ -151,7 +151,7 @@ class RawDynamoDbQuery implements \IteratorAggregate, \ArrayAccess, \Countable
      */
     public function count()
     {
-        return count($this->internal());
+        return \count($this->internal());
     }
 
     /**

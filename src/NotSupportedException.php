@@ -7,4 +7,5 @@ namespace Laravie\DynamoDb;
  */
 class NotSupportedException extends \Exception
 {
+    //
 }

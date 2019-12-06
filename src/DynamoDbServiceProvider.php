@@ -3,6 +3,7 @@
 namespace Laravie\DynamoDb;
 
 use Aws\DynamoDb\Marshaler;
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\ServiceProvider;
 use Laravie\DynamoDb\DynamoDb\DynamoDbManager;
 
@@ -31,14 +32,14 @@ class DynamoDbServiceProvider extends ServiceProvider
             'nullify_invalid' => true,
         ];
 
-        $this->app->singleton(DynamoDbClientInterface::class, function () use ($marshalerOptions) {
+        $this->app->singleton(DynamoDbClientInterface::class, static function () use ($marshalerOptions) {
             $client = new DynamoDbClientService(new Marshaler($marshalerOptions), new EmptyAttributeFilter());
 
             return $client;
         });
 
-        $this->app->singleton('dynamodb', function () {
-            return new DynamoDbManager(app(DynamoDbClientInterface::class));
+        $this->app->singleton('dynamodb', static function (Container $app) {
+            return new DynamoDbManager($app->make(DynamoDbClientInterface::class));
         });
     }
 }

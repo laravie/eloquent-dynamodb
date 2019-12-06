@@ -72,7 +72,7 @@ class Analyzer
         }
 
         foreach ($this->conditions as $condition) {
-            if (Arr::get($condition, 'type') !== ComparisonOperator::EQ) {
+            if (($condition['type'] ?? null) !== ComparisonOperator::EQ) {
                 return false;
             }
         }
@@ -103,8 +103,8 @@ class Analyzer
     {
         $keyConditions = $this->keyConditions() ?: [];
 
-        return array_filter($this->conditions, function ($condition) use ($keyConditions) {
-            return array_search($condition, $keyConditions) === false;
+        return \array_filter($this->conditions, static function ($condition) use ($keyConditions) {
+            return \array_search($condition, $keyConditions) === false;
         });
     }
 
@@ -145,7 +145,7 @@ class Analyzer
      */
     private function getCondition($column)
     {
-        return Arr::first($this->conditions, function ($condition) use ($column) {
+        return Arr::first($this->conditions, static function ($condition) use ($column) {
             return $condition['column'] === $column;
         }, []);
     }
@@ -157,8 +157,8 @@ class Analyzer
      */
     private function getConditions($columns)
     {
-        return array_filter($this->conditions, function ($condition) use ($columns) {
-            return in_array($condition['column'], $columns);
+        return \array_filter($this->conditions, static function ($condition) use ($columns) {
+            return \in_array($condition['column'], $columns);
         });
     }
 
@@ -175,14 +175,14 @@ class Analyzer
 
         foreach ($this->model->getDynamoDbIndexKeys() as $name => $keysInfo) {
             $conditionKeys = Arr::pluck($this->conditions, 'column');
-            $keys = array_values($keysInfo);
+            $keys = \array_values($keysInfo);
 
-            if (count(array_intersect($conditionKeys, $keys)) === count($keys)) {
+            if (\count(\array_intersect($conditionKeys, $keys)) === \count($keys)) {
                 if (! isset($this->indexName) || $this->indexName === $name) {
                     $index = new Index(
                         $name,
-                        Arr::get($keysInfo, 'hash'),
-                        Arr::get($keysInfo, 'range')
+                        $keysInfo['hash'] ?? null,
+                        $keysInfo['range'] ?? null
                     );
 
                     break;

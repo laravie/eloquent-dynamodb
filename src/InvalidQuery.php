@@ -7,4 +7,5 @@ namespace Laravie\DynamoDb;
  */
 class InvalidQuery extends \Exception
 {
+    //
 }

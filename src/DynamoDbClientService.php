@@ -4,8 +4,6 @@ namespace Laravie\DynamoDb;
 
 use Aws\DynamoDb\DynamoDbClient;
 use Aws\DynamoDb\Marshaler;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Log;
 
 class DynamoDbClientService implements DynamoDbClientInterface
 {
@@ -36,15 +34,15 @@ class DynamoDbClientService implements DynamoDbClientInterface
      */
     public function getClient($connection = null)
     {
-        $connection = $connection ?: config('dynamodb.default');
+        $connection = $connection ?: \config('dynamodb.default');
 
         if (isset($this->clients[$connection])) {
             return $this->clients[$connection];
         }
 
-        $config = config("dynamodb.connections.$connection", []);
+        $config = \config("dynamodb.connections.$connection", []);
         $config['version'] = '2012-08-10';
-        $config['debug'] = $this->getDebugOptions(Arr::get($config, 'debug'));
+        $config['debug'] = $this->getDebugOptions($config['debug'] ?? false);
 
         $client = new DynamoDbClient($config);
 
@@ -72,8 +70,8 @@ class DynamoDbClientService implements DynamoDbClientInterface
     protected function getDebugOptions($debug = false)
     {
         if ($debug === true) {
-            $logfn = function ($msg) {
-                Log::info($msg);
+            $logfn = static function ($msg) {
+                \info($msg);
             };
 
             return ['logfn' => $logfn];

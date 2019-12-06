@@ -57,7 +57,7 @@ class ExpressionAttributeNames
 
     public function placeholders()
     {
-        return array_merge(array_keys($this->mapping), $this->nested);
+        return \array_merge(\array_keys($this->mapping), $this->nested);
     }
 
     public function reset()
@@ -70,6 +70,6 @@ class ExpressionAttributeNames
 
     private function isNested($name)
     {
-        return strpos($name, '.') !== false || (strpos($name, '[') !== false && strpos($name, ']') !== false);
+        return \strpos($name, '.') !== false || (\strpos($name, '[') !== false && \strpos($name, ']') !== false);
     }
 }
