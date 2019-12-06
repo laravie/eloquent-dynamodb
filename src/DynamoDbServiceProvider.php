@@ -39,7 +39,7 @@ class DynamoDbServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton('dynamodb', static function (Container $app) {
-            return new DynamoDbManager($this->app->make(DynamoDbClientInterface::class));
+            return new DynamoDbManager($app->make(DynamoDbClientInterface::class));
         });
     }
 }
