@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static \Aws\DynamoDb\DynamoDbClient client()
- * @method static \BaoPham\DynamoDb\DynamoDb\QueryBuilder table($name)
- * @method static \BaoPham\DynamoDb\DynamoDb\QueryBuilder newQuery()
+ * @method static \Laravie\DynamoDb\DynamoDb\QueryBuilder table($name)
+ * @method static \Laravie\DynamoDb\DynamoDb\QueryBuilder newQuery()
  * @method static array marshalItem($item)
  * @method static array marshalValue($value)
  * @method static mixed unmarshalItem($value)

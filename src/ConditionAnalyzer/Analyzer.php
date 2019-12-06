@@ -9,7 +9,7 @@ use Laravie\DynamoDb\DynamoDbModel;
 /**
  * Class ConditionAnalyzer.
  *
- * @package BaoPham\DynamoDb\ConditionAnalyzer
+ * @package Laravie\DynamoDb\ConditionAnalyzer
  *
  * Usage:
  *

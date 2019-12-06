@@ -20,7 +20,7 @@ class DynamoDbClientService implements DynamoDbClientInterface
     protected $marshaler;
 
     /**
-     * @var \BaoPham\DynamoDb\EmptyAttributeFilter
+     * @var \Laravie\DynamoDb\EmptyAttributeFilter
      */
     protected $attributeFilter;
 
@@ -62,7 +62,7 @@ class DynamoDbClientService implements DynamoDbClientInterface
     }
 
     /**
-     * @return \BaoPham\DynamoDb\EmptyAttributeFilter
+     * @return \Laravie\DynamoDb\EmptyAttributeFilter
      */
     public function getAttributeFilter()
     {

@@ -8,7 +8,7 @@ use Laravie\DynamoDb\ConditionAnalyzer\Index;
 class DynamoDbCollection extends Collection
 {
     /**
-     * @var \BaoPham\DynamoDb\ConditionAnalyzer\Index
+     * @var \Laravie\DynamoDb\ConditionAnalyzer\Index
      */
     private $conditionIndex = null;
 

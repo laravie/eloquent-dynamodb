@@ -11,7 +11,7 @@ use Laravie\DynamoDb\RawDynamoDbQuery;
 /**
  * Class QueryBuilder.
  *
- * @package BaoPham\DynamoDb\DynamoDb
+ * @package Laravie\DynamoDb\DynamoDb
  *
  * Methods are in the form of `set<key_name>`, where `<key_name>`
  * is the key name of the query body to be sent.
