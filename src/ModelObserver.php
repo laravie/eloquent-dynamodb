@@ -21,7 +21,7 @@ class ModelObserver
     protected $marshaler;
 
     /**
-     * @var \BaoPham\DynamoDb\EmptyAttributeFilter
+     * @var \Laravie\DynamoDb\EmptyAttributeFilter
      */
     protected $attributeFilter;
 

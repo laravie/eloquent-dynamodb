@@ -7,7 +7,7 @@ use Aws\DynamoDb\DynamoDbClient;
 /**
  * Class ExecutableQuery.
  *
- * @package BaoPham\DynamoDb\DynamoDb
+ * @package Laravie\DynamoDb\DynamoDb
  *
  * @method \Aws\Result batchGetItem()
  * @method \GuzzleHttp\Promise\Promise batchGetItemAsync()

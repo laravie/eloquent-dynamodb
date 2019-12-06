@@ -7,7 +7,7 @@ use Laravie\DynamoDb\DynamoDbClientInterface;
 /**
  * Class DynamoDb.
  *
- * @package BaoPham\DynamoDb\DynamoDb
+ * @package Laravie\DynamoDb\DynamoDb
  */
 class DynamoDbManager
 {

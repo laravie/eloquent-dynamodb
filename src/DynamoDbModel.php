@@ -20,7 +20,7 @@ abstract class DynamoDbModel extends Model
     public $incrementing = false;
 
     /**
-     * @var \BaoPham\DynamoDb\DynamoDbClientInterface
+     * @var \Laravie\DynamoDb\DynamoDbClientInterface
      */
     protected static $dynamoDb;
 
@@ -34,7 +34,7 @@ abstract class DynamoDbModel extends Model
     /**
      * @deprecated
      *
-     * @var \BaoPham\DynamoDb\EmptyAttributeFilter
+     * @var \Laravie\DynamoDb\EmptyAttributeFilter
      */
     protected $attributeFilter;
 

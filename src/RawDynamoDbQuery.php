@@ -5,7 +5,7 @@ namespace Laravie\DynamoDb;
 /**
  * Class RawDynamoDbQuery.
  *
- * @package BaoPham\DynamoDb
+ * @package Laravie\DynamoDb
  */
 class RawDynamoDbQuery implements \IteratorAggregate, \ArrayAccess, \Countable
 {
