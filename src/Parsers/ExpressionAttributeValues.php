@@ -37,7 +37,7 @@ class ExpressionAttributeValues
 
     public function placeholders()
     {
-        return array_keys($this->mapping);
+        return \array_keys($this->mapping);
     }
 
     public function reset()

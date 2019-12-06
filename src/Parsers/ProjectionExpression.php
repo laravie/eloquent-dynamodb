@@ -22,6 +22,6 @@ class ProjectionExpression
             $this->names->set($column);
         }
 
-        return join(', ', $this->names->placeholders());
+        return \implode(', ', $this->names->placeholders());
     }
 }

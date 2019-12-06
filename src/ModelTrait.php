@@ -13,13 +13,13 @@ trait ModelTrait
         $observer = static::getObserverClassName();
 
         static::observe(new $observer(
-            App::make('BaoPham\DynamoDb\DynamoDbClientInterface')
+            App::make('Laravie\DynamoDb\DynamoDbClientInterface')
         ));
     }
 
     public static function getObserverClassName()
     {
-        return 'BaoPham\DynamoDb\ModelObserver';
+        return 'Laravie\DynamoDb\ModelObserver';
     }
 
     public function getDynamoDbTableName()

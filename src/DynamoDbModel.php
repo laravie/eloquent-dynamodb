@@ -220,7 +220,7 @@ abstract class DynamoDbModel extends Model
 
     public function delete()
     {
-        if (is_null($this->getKeyName())) {
+        if (\is_null($this->getKeyName())) {
             throw new Exception('No primary key defined on model.');
         }
 
@@ -243,7 +243,7 @@ abstract class DynamoDbModel extends Model
 
     public function deleteAsync()
     {
-        if (is_null($this->getKeyName())) {
+        if (\is_null($this->getKeyName())) {
             throw new Exception('No primary key defined on model.');
         }
 
@@ -343,7 +343,7 @@ abstract class DynamoDbModel extends Model
 
     public function setId($id)
     {
-        if (! is_array($id)) {
+        if (! \is_array($id)) {
             $this->setAttribute($this->getKeyName(), $id);
 
             return $this;
@@ -456,8 +456,8 @@ abstract class DynamoDbModel extends Model
      */
     public function __sleep()
     {
-        return array_keys(
-            Arr::except(get_object_vars($this), ['marshaler', 'attributeFilter'])
+        return \array_keys(
+            Arr::except(\get_object_vars($this), ['marshaler', 'attributeFilter'])
         );
     }
 

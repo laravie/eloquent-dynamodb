@@ -114,12 +114,12 @@ class QueryBuilder
     public function __call($method, $parameters)
     {
         if (Str::startsWith($method, 'set')) {
-            $key = array_reverse(explode('set', $method, 2))[0];
-            $this->query[$key] = current($parameters);
+            $key = \array_reverse(\explode('set', $method, 2))[0];
+            $this->query[$key] = \current($parameters);
 
             return $this;
         }
 
-        throw new BadMethodCallException(sprintf('Method %s::%s does not exist.', static::class, $method));
+        throw new BadMethodCallException(\sprintf('Method %s::%s does not exist.', static::class, $method));
     }
 }

@@ -42,12 +42,12 @@ class ComparisonOperator
 
     public static function getSupportedOperators()
     {
-        return array_keys(static::getOperatorMapping());
+        return \array_keys(static::getOperatorMapping());
     }
 
     public static function isValidOperator($operator)
     {
-        $operator = strtolower($operator);
+        $operator = \strtolower($operator);
 
         $mapping = static::getOperatorMapping();
 
@@ -58,7 +58,7 @@ class ComparisonOperator
     {
         $mapping = static::getOperatorMapping();
 
-        $operator = strtolower($operator);
+        $operator = \strtolower($operator);
 
         return $mapping[$operator];
     }
@@ -89,13 +89,13 @@ class ComparisonOperator
 
     public static function isValidQueryDynamoDbOperator($dynamoDbOperator, $isRangeKey = false)
     {
-        return in_array($dynamoDbOperator, static::getQuerySupportedOperators($isRangeKey));
+        return \in_array($dynamoDbOperator, static::getQuerySupportedOperators($isRangeKey));
     }
 
     public static function is($op, $dynamoDbOperator)
     {
         $mapping = static::getOperatorMapping();
 
-        return $mapping[strtolower($op)] === $dynamoDbOperator;
+        return $mapping[\strtolower($op)] === $dynamoDbOperator;
     }
 }

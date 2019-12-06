@@ -36,28 +36,24 @@ class ModelObserver
     {
         $attrs = $model->attributesToArray();
 
-        try {
+        \rescue(function () use ($model) {
             $this->dynamoDbClient->putItem([
                 'TableName' => $model->getDynamoDbTableName(),
                 'Item' => $this->marshaler->marshalItem($attrs),
             ]);
-        } catch (Exception $e) {
-            Log::error($e);
-        }
+        });
     }
 
     private function deleteFromDynamoDb($model)
     {
         $key = [$model->getKeyName() => $model->getKey()];
 
-        try {
+        \rescue(function () use ($model) {
             $this->dynamoDbClient->deleteItem([
                 'TableName' => $model->getDynamoDbTableName(),
                 'Key' => $this->marshaler->marshalItem($key),
             ]);
-        } catch (Exception $e) {
-            Log::error($e);
-        }
+        });
     }
 
     public function created($model)

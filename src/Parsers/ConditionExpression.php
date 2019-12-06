@@ -72,14 +72,14 @@ class ConditionExpression
         $parsed = [];
 
         foreach ($where as $condition) {
-            $boolean = Arr::get($condition, 'boolean');
-            $value = Arr::get($condition, 'value');
-            $type = Arr::get($condition, 'type');
+            $boolean = $condition['boolean'] ?? null;
+            $value = $condition['value'] ?? null;
+            $type = $condition['type'] ?? null;
 
             $prefix = '';
 
-            if (count($parsed) > 0) {
-                $prefix = strtoupper($boolean).' ';
+            if (\count($parsed) > 0) {
+                $prefix = \strtoupper($boolean).' ';
             }
 
             if ($type === 'Nested') {
@@ -88,13 +88,13 @@ class ConditionExpression
             }
 
             $parsed[] = $prefix.$this->parseCondition(
-                Arr::get($condition, 'column'),
+                $condition['column'] ?? null,
                 $type,
                 $value
             );
         }
 
-        return implode(' ', $parsed);
+        return \implode(' ', $parsed);
     }
 
     public function reset()
@@ -142,7 +142,7 @@ class ConditionExpression
 
         $this->values->set($placeholder, DynamoDb::marshalValue($value));
 
-        return sprintf($template, $this->names->placeholder($name), $placeholder);
+        return \sprintf($template, $this->names->placeholder($name), $placeholder);
     }
 
     protected function parseBetweenCondition($name, $value, $template)
@@ -155,7 +155,7 @@ class ConditionExpression
 
         $this->values->set($second, DynamoDb::marshalValue($value[1]));
 
-        return sprintf($template, $this->names->placeholder($name), $first, $second);
+        return \sprintf($template, $this->names->placeholder($name), $first, $second);
     }
 
     protected function parseInCondition($name, $value, $template)
@@ -170,11 +170,11 @@ class ConditionExpression
             $this->values->set($placeholder, DynamoDb::marshalValue($item));
         }
 
-        return sprintf($template, $this->names->placeholder($name), implode(', ', $valuePlaceholders));
+        return \sprintf($template, $this->names->placeholder($name), \implode(', ', $valuePlaceholders));
     }
 
     protected function parseNullCondition($name, $template)
     {
-        return sprintf($template, $this->names->placeholder($name));
+        return \sprintf($template, $this->names->placeholder($name));
     }
 }

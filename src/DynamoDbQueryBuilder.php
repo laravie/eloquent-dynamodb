@@ -216,7 +216,7 @@ class DynamoDbQueryBuilder
         // If the column is an array, we will assume it is an array of key-value pairs
         // and can add them each as a where clause. We will maintain the boolean we
         // received when the method was called and pass it into the nested where.
-        if (is_array($column)) {
+        if (\is_array($column)) {
             foreach ($column as $key => $value) {
                 $this->where($key, '=', $value, $boolean);
             }
@@ -227,8 +227,8 @@ class DynamoDbQueryBuilder
         // Here we will make some assumptions about the operator. If only 2 values are
         // passed to the method, we will assume that the operator is an equals sign
         // and keep going. Otherwise, we'll require the operator to be passed in.
-        if (func_num_args() == 2) {
-            list($value, $operator) = [$operator, '='];
+        if (\func_num_args() == 2) {
+            [$value, $operator] = [$operator, '='];
         }
 
         // If the columns is actually a Closure instance, we will assume the developer
@@ -242,7 +242,7 @@ class DynamoDbQueryBuilder
         // assume that the developer is just short-cutting the '=' operators and
         // we will set the operators to '=' and set the values appropriately.
         if (! ComparisonOperator::isValidOperator($operator)) {
-            list($value, $operator) = [$operator, '='];
+            [$value, $operator] = [$operator, '='];
         }
 
         // If the value is a Closure, it means the developer is performing an entire
@@ -272,7 +272,7 @@ class DynamoDbQueryBuilder
      */
     public function whereNested(Closure $callback, $boolean = 'and')
     {
-        call_user_func($callback, $query = $this->forNestedWhere());
+        \call_user_func($callback, $query = $this->forNestedWhere());
 
         return $this->addNestedWhereQuery($query, $boolean);
     }
@@ -297,7 +297,7 @@ class DynamoDbQueryBuilder
      */
     public function addNestedWhereQuery($query, $boolean = 'and')
     {
-        if (count($query->wheres)) {
+        if (\count($query->wheres)) {
             $type = 'Nested';
             $column = null;
             $value = $query->wheres;
@@ -383,7 +383,7 @@ class DynamoDbQueryBuilder
     {
         $type = $not ? ComparisonOperator::NOT_NULL : ComparisonOperator::NULL;
 
-        $this->wheres[] = compact('column', 'type', 'boolean');
+        $this->wheres[] = \compact('column', 'type', 'boolean');
 
         return $this;
     }
@@ -447,7 +447,7 @@ class DynamoDbQueryBuilder
             $results = $this->getAll([], $chunkSize, false);
 
             if (! $results->isEmpty()) {
-                if (call_user_func($callback, $results) === false) {
+                if (\call_user_func($callback, $results) === false) {
                     return false;
                 }
             }
@@ -488,7 +488,7 @@ class DynamoDbQueryBuilder
 
         $item = $query->prepare($this->client)->getItem();
 
-        $item = Arr::get($item->toArray(), 'Item');
+        $item = $item->toArray()['Item'] ?? null;
 
         if (empty($item)) {
             return null;
@@ -521,8 +521,8 @@ class DynamoDbQueryBuilder
 
         $table = $this->model->getTable();
 
-        $keys = collect($ids)->map(function ($id) {
-            if (! is_array($id)) {
+        $keys = \collect($ids)->map(static function ($id) {
+            if (! \is_array($id)) {
                 $id = [$this->model->getKeyName() => $id];
             }
 
@@ -556,10 +556,10 @@ class DynamoDbQueryBuilder
         $result = $this->find($id, $columns);
 
         if ($this->isMultipleIds($id)) {
-            if (count($result) == count(array_unique($id))) {
+            if (\count($result) == \count(\array_unique($id))) {
                 return $result;
             }
-        } elseif (! is_null($result)) {
+        } elseif (! \is_null($result)) {
             return $result;
         }
 
@@ -575,7 +575,7 @@ class DynamoDbQueryBuilder
 
     public function firstOrFail($columns = [])
     {
-        if (! is_null($model = $this->first($columns))) {
+        if (! \is_null($model = $this->first($columns))) {
             return $model;
         }
 
@@ -593,7 +593,7 @@ class DynamoDbQueryBuilder
      */
     public function removeAttribute(...$attributes)
     {
-        $keySet = ! empty(array_filter($this->model->getKeys()));
+        $keySet = ! empty(\array_filter($this->model->getKeys()));
 
         if (! $keySet) {
             $analyzer = $this->getConditionAnalyzer();
@@ -676,14 +676,14 @@ class DynamoDbQueryBuilder
 
     public function all($columns = [])
     {
-        $limit = isset($this->limit) ? $this->limit : static::MAX_LIMIT;
+        $limit = $this->limit ?? static::MAX_LIMIT;
 
         return $this->getAll($columns, $limit, ! isset($this->limit));
     }
 
     public function count()
     {
-        $limit = isset($this->limit) ? $this->limit : static::MAX_LIMIT;
+        $limit = $this->limit ?? static::MAX_LIMIT;
         $raw = $this->toDynamoDbQuery(['count(*)'], $limit);
 
         if ($raw->op === 'Scan') {
@@ -730,7 +730,7 @@ class DynamoDbQueryBuilder
                 $res = $this->client->query($raw->query);
             }
 
-            $this->lastEvaluatedKey = Arr::get($res, 'LastEvaluatedKey');
+            $this->lastEvaluatedKey = $res['LastEvaluatedKey'] ?? null;
             $iterator = $res['Items'];
         }
 
@@ -811,7 +811,7 @@ class DynamoDbQueryBuilder
         $raw = new RawDynamoDbQuery($op, $queryBuilder->prepare($this->client)->query);
 
         if ($this->decorator) {
-            call_user_func($this->decorator, $raw);
+            \call_user_func($this->decorator, $raw);
         }
 
         return $raw;
@@ -822,7 +822,7 @@ class DynamoDbQueryBuilder
      */
     protected function getConditionAnalyzer()
     {
-        return with(new Analyzer())
+        return (new Analyzer())
             ->on($this->model)
             ->withIndex($this->index)
             ->analyze($this->wheres);
@@ -830,10 +830,10 @@ class DynamoDbQueryBuilder
 
     protected function isMultipleIds($id)
     {
-        $keys = collect($this->model->getKeyNames());
+        $keys = \collect($this->model->getKeyNames());
 
         // could be ['id' => 'foo'], ['id1' => 'foo', 'id2' => 'bar']
-        $single = $keys->first(function ($name) use ($id) {
+        $single = $keys->first(static function ($name) use ($id) {
             return ! isset($id[$name]);
         }) === null;
 
@@ -842,7 +842,7 @@ class DynamoDbQueryBuilder
         }
 
         // could be ['foo', 'bar'], [['id1' => 'foo', 'id2' => 'bar'], ...]
-        return $this->model->hasCompositeKey() ? is_array(Arr::first($id)) : is_array($id);
+        return $this->model->hasCompositeKey() ? \is_array(Arr::first($id)) : \is_array($id);
     }
 
     /**
@@ -873,7 +873,7 @@ class DynamoDbQueryBuilder
     {
         $this->scopes[$identifier] = $scope;
 
-        if (method_exists($scope, 'extend')) {
+        if (\method_exists($scope, 'extend')) {
             $scope->extend($this);
         }
 
@@ -889,8 +889,8 @@ class DynamoDbQueryBuilder
      */
     public function withoutGlobalScope($scope)
     {
-        if (! is_string($scope)) {
-            $scope = get_class($scope);
+        if (! \is_string($scope)) {
+            $scope = \get_class($scope);
         }
 
         unset($this->scopes[$scope]);
@@ -909,7 +909,7 @@ class DynamoDbQueryBuilder
      */
     public function withoutGlobalScopes(array $scopes = null)
     {
-        if (is_array($scopes)) {
+        if (\is_array($scopes)) {
             foreach ($scopes as $scope) {
                 $this->withoutGlobalScope($scope);
             }
@@ -948,7 +948,7 @@ class DynamoDbQueryBuilder
                 continue;
             }
 
-            $builder->callScope(function (DynamoDbQueryBuilder $builder) use ($scope) {
+            $builder->callScope(static function (DynamoDbQueryBuilder $builder) use ($scope) {
                 // If the scope is a Closure we will just go ahead and call the scope with the
                 // builder instance. The "callScope" method will properly group the clauses
                 // that are added to this query so "where" clauses maintain proper logic.
@@ -980,7 +980,7 @@ class DynamoDbQueryBuilder
      */
     protected function callScope(callable $scope, $parameters = [])
     {
-        array_unshift($parameters, $this);
+        \array_unshift($parameters, $this);
 
         // $query = $this->getQuery();
 
@@ -990,7 +990,7 @@ class DynamoDbQueryBuilder
         // $originalWhereCount = is_null($query->wheres)
         //             ? 0 : count($query->wheres);
 
-        $result = $scope(...array_values($parameters)) ?: $this;
+        $result = $scope(...\array_values($parameters)) ?: $this;
 
         // if (count((array) $query->wheres) > $originalWhereCount) {
         //     $this->addNewWheresWithinGroup($query, $originalWhereCount);
@@ -1009,7 +1009,7 @@ class DynamoDbQueryBuilder
      */
     public function __call($method, $parameters)
     {
-        if (method_exists($this->model, $scope = 'scope'.ucfirst($method))) {
+        if (\method_exists($this->model, $scope = 'scope'.\ucfirst($method))) {
             return $this->callScope([$this->model, $scope], $parameters);
         }
 
