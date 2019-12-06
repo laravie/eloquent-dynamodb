@@ -147,7 +147,7 @@ class Analyzer
     {
         return Arr::first($this->conditions, function ($condition) use ($column) {
             return $condition['column'] === $column;
-        });
+        }, []);
     }
 
     /**
