@@ -1,10 +1,26 @@
-Contribution Guide
-==================
+# Contributing
 
-Thank you for considering contributing to this library. Please make sure your code follows the PSR-2 coding standard and the PSR-4 autoloading standard before sending a pull request.
+Contributions are welcome and will be fully credited.
 
-Test
-----
+We accept contributions via Pull Requests on [GitHub](https://github.com/staudenmeir/dusk-updater).
+
+## Pull Requests
+
+- **[PSR-2 Coding Standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)** - The easiest way to apply the conventions is to install [PHP CS Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer).
+
+- **Add tests** - Your patch won't be accepted if it doesn't have tests.
+
+- **Document any change in behaviour** - Make sure the `README.md` and any other relevant documentation are kept up-to-date.
+
+- **Consider our release cycle** - We try to follow [SemVer v2.0.0](http://semver.org). Randomly breaking public APIs is not an option.
+
+- **Create feature branches** - Don't ask us to pull from your master branch.
+
+- **One pull request per feature** - If you want to do more than one thing, send multiple pull requests.
+
+- **Send coherent history** - Make sure each individual commit in your pull request is meaningful. If you had to make multiple intermediate commits while developing, please [squash them](http://www.git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Changing-Multiple-Commit-Messages) before submitting.
+
+## Running Tests
 
 > * DynamoDb local version: 2016-01-07_1.0
 > * DynamoDb local schema for tests created by the [DynamoDb local shell](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tools.DynamoDBLocal.Shell.html) is located [here](dynamodb_local_schema.js)
