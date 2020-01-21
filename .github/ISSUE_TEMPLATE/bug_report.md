@@ -1,28 +1,29 @@
 ---
-name: Bug report
-about: Create a report to help us improve
-
+name: "Bug report"
+about: 'Report a general library issue.'
 ---
 
-**Describe the bug**
+- Package Version: #.#.#
+- Laravel Version: #.#.#
+- PHP Version: #.#.#
 
-A clear and concise description of what the bug is.
+### Description:
 
-**Schema**
+
+### Steps To Reproduce:
+
+
+### Schema:
 
 Describe your table schema:
+
 * Primary key / composite key
 * Any index?
 
-**Debug info**
+### Version Information:
 
 Show the query that you're having trouble with by copy-pasting the result of:
 
 ```php
 print_r($query->toDynamoDbQuery());
 ```
-
-**Version info**
-
-* Laravel: 5.5
-* laravel-dynamodb: latest
