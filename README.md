@@ -71,7 +71,7 @@ Install
 $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
-   
+
 // Load dynamodb config file
 $app->configure('dynamodb');
    
@@ -580,3 +580,4 @@ Author and Contributors
 * [Quang Ngo](https://github.com/vanquang9387)
 * [David Higgins](https://github.com/zoul0813)
 * [Damon Williams](https://github.com/footballencarta)
+* [David Palmer](https://github.com/dp88)
