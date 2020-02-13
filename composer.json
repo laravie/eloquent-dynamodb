@@ -22,12 +22,12 @@
     "require": {
         "php": ">=7.2",
         "aws/aws-sdk-php": "^3.37",
-        "illuminate/database": "^5.8 || ^6.0",
-        "illuminate/support": "^5.8 || ^6.0",
+        "illuminate/database": "^5.8 || ^6.0 || ^7.0",
+        "illuminate/support": "^5.8 || ^6.0 || ^7.0",
         "guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
-        "orchestra/testbench": "^3.8 || ^4.0"
+        "orchestra/testbench": "^3.8 || ^4.5 || ^5.0"
     },
     "scripts": {
         "test": "phpunit",
