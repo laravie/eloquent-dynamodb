@@ -20,14 +20,14 @@
         }
     },
     "require": {
-        "php": ">=7.2",
+        "php": ">=7.3",
         "aws/aws-sdk-php": "^3.37",
-        "illuminate/database": "^5.8 || ^6.0 || ^7.0",
-        "illuminate/support": "^5.8 || ^6.0 || ^7.0",
+        "illuminate/database": "^6.0 || ^7.0 || ^8.0",
+        "illuminate/support": "^6.0 || ^7.0 || ^8.0",
         "guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
-        "orchestra/testbench": "^3.8 || ^4.5 || ^5.0"
+        "orchestra/testbench": "^4.5 || ^5.0 || ^6.0"
     },
     "scripts": {
         "test": "phpunit",
