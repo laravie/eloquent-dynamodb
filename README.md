@@ -11,24 +11,24 @@ Supports all key types - primary hash key and composite keys.
 
 > For advanced users only. If you're not familiar with Laravel, Laravel Eloquent and DynamoDB, then I suggest that you get familiar with those first. 
 
-* [Install](#install)
-* [Usage](#usage)
-  * [find() and delete()](#find-and-delete) 
-  * [Conditions](#conditions)
-  * [all() and first()](#all-and-first)
-  * [Pagination](#pagination)
-  * [update](#update) / [updateAsync()](#updateasync)
-  * [save](#save) / [saveAsync()](#saveasync)
-  * [delete](#delete) / [deleteAsync()](#deleteasync)
-  * [chunk](#chunk)
-  * [limit() and take()](#limit-and-take)
-  * [firstOrFail()](#firstorfail)
-  * [findOrFail()](#findorfail)
-  * [refresh()](#refresh)
-  * [Query scope](#query-scope)
-  * [REMOVE — Deleting Attributes From An Item](#remove--deleting-attributes-from-an-item)
-  * [toSql() Style](#tosql-style)
-  * [Decorate Query](#decorate-query)
+* [Installation](#installation)
+* [Usages](#usages)
+  - [find() and delete()](#find-and-delete) 
+  - [Conditions](#conditions)
+  - [all() and first()](#all-and-first)
+  - [Pagination](#pagination)
+  - [update](#update) / [updateAsync()](#updateasync)
+  - [save](#save) / [saveAsync()](#saveasync)
+  - [delete](#delete) / [deleteAsync()](#deleteasync)
+  - [chunk](#chunk)
+  - [limit() and take()](#limit-and-take)
+  - [firstOrFail()](#firstorfail)
+  - [findOrFail()](#findorfail)
+  - [refresh()](#refresh)
+  - [Query scope](#query-scope)
+  - [REMOVE — Deleting Attributes From An Item](#remove--deleting-attributes-from-an-item)
+  - [toSql() Style](#tosql-style)
+  - [Decorate Query](#decorate-query)
 * [Indexes](#indexes)
 * [Composite Keys](#composite-keys)
 * [Query Builder](#query-builder)
@@ -36,14 +36,15 @@ Supports all key types - primary hash key and composite keys.
 * [License](LICENSE)
 * [Author and Contributors](#author-and-contributors)
 
-Install
-------
+## Installation
 
-* Composer install
+To install through composer, run the following command from terminal:
 
-    composer require laravie/eloquent-dynamodb
- 
-* Install service provider:
+    composer require "laravie/eloquent-dynamodb"
+
+### Laravel setup
+
+Only if you disable package discovery, please add the following service provider to `config/app.php` under `providers`:
 
 ```php
     // config/app.php
@@ -53,19 +54,20 @@ Install
         Laravie\DynamoDb\DynamoDbServiceProvider::class,
         ...
     ];
-``` 
-    
-* Run
+```
 
-    php artisan vendor:publish
-    
+Next you may want to publish the configuration file using the following command:
+
+    php artisan vendor:publish --provider="Laravie\DynamoDb\DynamoDbServiceProvider"
+
+
 * Update DynamoDb config in [config/dynamodb.php](config/dynamodb.php)
 
-**For Lumen**
+### Lumen setup
 
-* Try [this](https://github.com/laravelista/lumen-vendor-publish) to install the `vendor:publish` command
+You can either copy the configuration file manually or use [laravelista/lumen-vendor-publish](https://github.com/laravelista/lumen-vendor-publish) to install the `vendor:publish` command.
   
-* Load configuration file and enable Eloquent support in `bootstrap/app.php`:
+Next, load configuration file and enable Eloquent support in `bootstrap/app.php`:
   
 ```php
 $app = new Laravel\Lumen\Application(
@@ -79,8 +81,8 @@ $app->configure('dynamodb');
 $app->withEloquent();
 ```
 
-Usage
------
+## Usages
+
 * Extends your model with `Laravie\DynamoDb\DynamoDbModel`, then you can use Eloquent methods that are supported. The idea here is that you can switch back to Eloquent without changing your queries.  
 * Or if you want to sync your DB table with a DynamoDb table, use trait `Laravie\DynamoDb\ModelTrait`, it will call a `PutItem` after the model is saved.
 * Alternatively, you can use the [query builder](#query-builder) facade to build more complex queries.
@@ -385,8 +387,8 @@ $items = $model
     ->get();
 ```
 
-Indexes
------------
+## Indexes
+
 If your table has indexes, make sure to declare them in your model class like so
 
 ```php
@@ -456,8 +458,8 @@ $model->where('user_id', 123)->where('count', '>', 10)->withIndex('count_index')
 ```
 
 
-Composite Keys
---------------
+## Composite Keys
+
 To use composite keys with your model:
 
 * Set `$compositeKey` to an array of the attributes names comprising the key, e.g.
@@ -473,8 +475,7 @@ protected $compositeKey = ['customer_id', 'agent_id'];
 $model->find(['customer_id' => 'value1', 'agent_id' => 'value2']);
 ```
 
-Query Builder
--------------
+## Query Builder
 
 Use `DynamoDb` facade to build raw queries
 
@@ -554,19 +555,16 @@ And when ready:
 $query->prepare()->updateTable();
 ```
 
-FAQ
----
+## FAQ
+
 Q: Cannot assign `id` property if its not in the fillable array  
 A: Try [this](https://github.com/baopham/laravel-dynamodb/issues/10)?  
-
 
 Q: How to create migration?  
 A: Please see [this issue](https://github.com/baopham/laravel-dynamodb/issues/90)  
 
-
 Q: How to use with factory?  
 A: Please see [this issue](https://github.com/baopham/laravel-dynamodb/issues/111)  
-
 
 Q: How do I use with Job? Getting a SerializesModels error  
 A: You can either [write your own restoreModel](https://github.com/baopham/laravel-dynamodb/issues/132) or remove the `SerializesModels` trait from your Job.
