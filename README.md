@@ -1,4 +1,4 @@
-laravel-dynamodb
+Eloquent syntax for DynamoDB
 ================
 
 [![Latest Stable Version](https://poser.pugx.org/laravie/eloquent-dynamodb/v/stable)](https://packagist.org/packages/laravie/eloquent-dynamodb)
