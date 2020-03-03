@@ -60,8 +60,7 @@ Next you may want to publish the configuration file using the following command:
 
     php artisan vendor:publish --provider="Laravie\DynamoDb\DynamoDbServiceProvider"
 
-
-* Update DynamoDb config in [config/dynamodb.php](config/dynamodb.php)
+> You can then update DynamoDb config in [config/dynamodb.php](config/dynamodb.php) or configurate the value using `.env`.
 
 ### Lumen setup
 
@@ -80,6 +79,8 @@ $app->configure('dynamodb');
 // Enable Eloquent support
 $app->withEloquent();
 ```
+
+> You can then update DynamoDb config in [config/dynamodb.php](config/dynamodb.php) or configurate the value using `.env`.
 
 ## Usages
 
