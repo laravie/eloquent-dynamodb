@@ -2,8 +2,8 @@ dist: bionic
 language: php
 
 php:
-  - 7.2
   - 7.3
+  - 7.4
 
 env:
   global:
@@ -34,21 +34,21 @@ script:
 
 matrix:
   include:
-    - php: 7.4
+    - php: 7.2
       env: laravel=^5.8
-    - php: 7.4
+    - php: 7.2
       env: laravel=^6.0
-    - php: 7.4
+    - php: 7.2
       env: laravel=^7.0
-    - php: 7.4
+    - php: 7.2
       env: setup=stable laravel=^5.8
-    - php: 7.4
+    - php: 7.2
       env: setup=stable laravel=^6.0
-    - php: 7.4
+    - php: 7.2
       env: setup=stable laravel=^7.0
-    - php: 7.4
+    - php: 7.2
       env: setup=lowest laravel=^6.0
-    - php: 7.4
+    - php: 7.2
       env: setup=lowest laravel=^7.0
   allow_failures:
     - env: setup=coveralls coverage=yes laravel=^6.0
