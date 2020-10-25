@@ -26,11 +26,12 @@ before_install:
   - composer config discard-changes true
 
 before_script:
-  - composer require "laravel/framework=${laravel}" --prefer-dist --no-interaction --no-suggest
+  - composer require "laravel/framework=${laravel}" --prefer-dist --no-interaction --no-update
+  - composer install --prefer-dist --no-interaction
   - java -Djava.library.path=./DynamoDBLocal_lib -jar dynamodb_local/DynamoDBLocal.jar --port 3000 &
   - sleep 2
-  - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-stable; fi
-  - if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-lowest --prefer-stable; fi
+  - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-stable; fi
+  - if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-lowest --prefer-stable; fi
 
 script:
   - vendor/bin/phpunit -c phpunit.xml
