@@ -50,7 +50,7 @@ jobs:
           composer-options: "--prefer-dist"
       - name: Execute tests
         run: |
-          java -Djava.library.path=./DynamoDBLocal_lib -jar dynamodb_local/DynamoDBLocal.jar --port 3000
+          java -Djava.library.path=./DynamoDBLocal_lib -jar dynamodb_local/DynamoDBLocal.jar --port 3000 &
           sleep 2
           vendor/bin/phpunit
 
@@ -96,6 +96,6 @@ jobs:
           composer-options: "--prefer-dist"
       - name: Execute tests
         run: |
-          java -Djava.library.path=./DynamoDBLocal_lib -jar dynamodb_local/DynamoDBLocal.jar --port 3000
+          java -Djava.library.path=./DynamoDBLocal_lib -jar dynamodb_local/DynamoDBLocal.jar --port 3000 &
           sleep 2
           vendor/bin/phpunit
