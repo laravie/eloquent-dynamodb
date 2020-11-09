@@ -48,7 +48,7 @@ jobs:
           sharedDb: # undefined by default
           delayTransientStatuses: # undefined by default
           optimizeDbBeforeStartup: # undefined by default
-          port: 8000
+          port: 3000
           cors: '*'
 
       - name: Install Laravel Framework ${{ matrix.laravel }}
@@ -101,7 +101,7 @@ jobs:
           sharedDb: # undefined by default
           delayTransientStatuses: # undefined by default
           optimizeDbBeforeStartup: # undefined by default
-          port: 8000
+          port: 3000
           cors: '*'
 
       - name: Install Laravel Framework ${{ matrix.laravel }}
