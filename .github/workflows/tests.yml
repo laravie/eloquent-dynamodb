@@ -42,9 +42,14 @@ jobs:
           coverage: none
 
       - name: Setup DynamoDB Local
-        uses: lekki/dynamodb-local-action@v0.1
+        uses: rrainn/dynamodb-action@v2.0.0
         with:
-          host_port: 3000
+          dbPath: # undefined by default, if this is undefined inMemory will be used
+          sharedDb: # undefined by default
+          delayTransientStatuses: # undefined by default
+          optimizeDbBeforeStartup: # undefined by default
+          port: 3000
+          cors: '*'
 
       - name: Install Laravel Framework ${{ matrix.laravel }}
         run: |
@@ -90,9 +95,10 @@ jobs:
           coverage: none
 
       - name: Setup DynamoDB Local
-        uses: lekki/dynamodb-local-action@v0.1
+        uses: rrainn/dynamodb-action@v2.0.0
         with:
-          host_port: 3000
+          port: 3000
+          cors: '*'
 
       - name: Install Laravel Framework ${{ matrix.laravel }}
         run: |
