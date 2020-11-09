@@ -4,7 +4,7 @@ Eloquent syntax for DynamoDB
 [![Latest Stable Version](https://poser.pugx.org/laravie/eloquent-dynamodb/v/stable)](https://packagist.org/packages/laravie/eloquent-dynamodb)
 [![Total Downloads](https://poser.pugx.org/laravie/eloquent-dynamodb/downloads)](https://packagist.org/packages/laravie/eloquent-dynamodb)
 [![Latest Unstable Version](https://poser.pugx.org/laravie/eloquent-dynamodb/v/unstable)](https://packagist.org/packages/laravie/eloquent-dynamodb)
-[![Build Status](https://travis-ci.org/laravie/eloquent-dynamodb.svg?branch=1.x)](https://travis-ci.org/laravie/eloquent-dynamodb)
+[![tests](https://github.com/laravie/eloquent-dynamodb/workflows/tests/badge.svg?branch=1.x)](https://github.com/laravie/eloquent-dynamodb/actions?query=workflow%3Atests+branch%3A1.x)
 [![License](https://poser.pugx.org/laravie/eloquent-dynamodb/license)](https://packagist.org/packages/laravie/eloquent-dynamodb)
 
 Supports all key types - primary hash key and composite keys.
