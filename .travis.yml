@@ -3,57 +3,18 @@ language: php
 
 php:
   - 7.3
-  - 7.4
-
-env:
-  global:
-    - setup=basic
-  matrix:
-    - laravel=^5.8
-    - laravel=^6.0
-    - laravel=^7.0
-    - laravel=^8.0
-    - setup=stable laravel=^5.8
-    - setup=stable laravel=^6.0
-    - setup=stable laravel=^7.0
-    - setup=stable laravel=^8.0
-    - setup=lowest laravel=^5.8
-    - setup=lowest laravel=^6.0
-    - setup=lowest laravel=^7.0
-    - setup=lowest laravel=^8.0
 
 before_install:
   - composer config discard-changes true
 
 before_script:
-  - composer require "laravel/framework=${laravel}" --prefer-dist --no-interaction --no-update
   - composer install --prefer-dist --no-interaction
   - java -Djava.library.path=./DynamoDBLocal_lib -jar dynamodb_local/DynamoDBLocal.jar --port 3000 &
   - sleep 2
-  - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-stable; fi
-  - if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-lowest --prefer-stable; fi
+  - composer update --prefer-dist --no-interaction --prefer-stable
 
 script:
   - vendor/bin/phpunit -c phpunit.xml
 
 matrix:
-  include:
-    - php: 7.2
-      env: laravel=^5.8
-    - php: 7.2
-      env: laravel=^6.0
-    - php: 7.2
-      env: laravel=^7.0
-    - php: 7.2
-      env: setup=stable laravel=^5.8
-    - php: 7.2
-      env: setup=stable laravel=^6.0
-    - php: 7.2
-      env: setup=stable laravel=^7.0
-    - php: 7.2
-      env: setup=lowest laravel=^6.0
-    - php: 7.2
-      env: setup=lowest laravel=^7.0
-  allow_failures:
-    - env: setup=coveralls coverage=yes laravel=^6.0
   fast_finish: true
